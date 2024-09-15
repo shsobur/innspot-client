@@ -1,0 +1,74 @@
+.main_baner_outer_container {
+  height: 80vh;
+  width: 100%;
+  padding: 10px 30px;
+  background-color: #FAFAFA;
+}
+
+.main_baner_inner_container {
+  height: 100%;
+  width: 100%;
+}
+
+.main_baner_content_container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.baner_left_contect_container {
+  height: auto;
+  width: 50%;
+}
+.baner_right_contect_container {
+  height: 80%;
+  width: 50%;
+}
+
+.baner_right_contect_container img {
+  height: 100%;
+  width: 100%;
+}
+
+/* Baner left side content styleing */
+
+.baner_left_contect_container h1 {
+  font-family: "Dancing Script", serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #7C6A46;
+}
+
+.baner_left_contect_container h2 {
+  font-family: "Raleway", serif;
+  color: #1C1C1C;
+  font-size: 3.8rem;
+  font-weight: 700;
+  padding: 25px 0;
+  padding-right: 50px;
+  line-height: 70px;
+}
+
+.baner_left_contect_container p {
+  font-family: "Raleway", serif;
+  color: #737373;
+  font-size: 14px;
+  font-weight: 500;
+  padding-right: 500px;
+}
+
+.baner_left_contect_container button {
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #7C6A46;
+  margin: 20px 0;
+  padding: 10px 30px;
+}
+
+.baner_left_contect_container button:hover {
+  transition: 0.3s ease-in-out;
+  color: #f2f2f2;
+  background-color: #927f59;
+}
