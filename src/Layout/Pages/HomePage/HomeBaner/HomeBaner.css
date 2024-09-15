@@ -38,7 +38,7 @@
   position: absolute;
   top: 0px;
   z-index: 77;
-  background: linear-gradient(90.00deg, #151515cd,#1515151a 100%);
+  background: linear-gradient(90.00deg, #151515,#1515151a 100%);
 }
 
 /* Baner OverLay__ end */
@@ -114,4 +114,143 @@
   height: 100%;
   width: 100%;
   border-radius: 16px;
+  border-bottom: 4px solid #7C6A46;
+}
+
+/* Responsive design for home baner section__ */
+
+@media screen and (max-width: 1536px) {
+  .baner_left_contect_container p {
+    padding-right: 300px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .baner_left_contect_container h1 {
+    font-size: 3.2rem;
+  }
+
+  .baner_left_contect_container h2 {
+    font-size: 3.2rem;
+    padding: 20px 0;
+    padding-right: 0;
+    line-height: 60px;
+  }
+
+  .baner_left_contect_container p {
+    padding-right: 120px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main_baner_content_container {
+    padding: 0 20px;
+  }
+
+  .baner_left_contect_container h1 {
+    font-size: 2.5rem;
+  }
+
+  .baner_left_contect_container h2 {
+    font-size: 2.5rem;
+    padding: 10px 0;
+    line-height: 45px;
+  }
+
+  .baner_left_contect_container p {
+    padding-right: 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main_baner_content_container {
+    padding: 0 15px;
+  }
+
+  .baner_left_contect_container h1 {
+    font-size: 2.2rem;
+  }
+
+  .baner_left_contect_container h2 {
+    font-size: 2.2rem;
+    padding: 10px 0;
+    line-height: 40px;
+  }
+
+  .baner_left_contect_container p {
+    padding-right: 30px;
+  }
+
+  .baner_left_contect_container button {
+    padding: 6px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main_baner_content_container {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .baner_left_contect_container {
+    height: 50%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .baner_right_contect_container {
+    height: 50%;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  .baner_left_contect_container h1 {
+    font-size: 2rem;
+  }
+
+  .baner_left_contect_container h2 {
+    font-size: 2rem;
+    padding:5px 0;
+    line-height: 35px;
+  }
+
+  .baner_left_contect_container p {
+    padding: 0 50px;
+  }
+
+  .baner_left_contect_container button {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .main_baner_outer_container {
+    padding: 10px 20px;
+  }
+
+  .baner_left_contect_container {
+    height: 50%;
+    width: 100%;
+  }
+
+  .baner_right_contect_container {
+    height: 50%;
+    width: 100%;
+  }
+
+  .baner_left_contect_container h1 {
+    font-size: 1.5rem;
+  }
+
+  .baner_left_contect_container h2 {
+    font-size: 1.5rem;
+    line-height: 30px;
+  }
+
+  .baner_left_contect_container p {
+    padding: 0 10px;
+  }
 }
