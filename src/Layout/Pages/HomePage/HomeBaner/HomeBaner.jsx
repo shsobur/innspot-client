@@ -18,6 +18,7 @@ const HomeBaner = () => {
       <div className="main_container">
         <div className="main_baner_outer_container">
           <div className="main_baner_inner_container">
+
             <div className="baner_bg_image_main_container">
               <Swiper
                 loop={true}
@@ -98,6 +99,7 @@ const HomeBaner = () => {
                 </Swiper>
               </div>
             </div>
+
           </div>
         </div>
       </div>

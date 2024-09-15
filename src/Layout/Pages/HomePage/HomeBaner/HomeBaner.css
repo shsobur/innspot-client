@@ -1,5 +1,5 @@
 .main_baner_outer_container {
-  height: 80vh;
+  height: 85vh;
   width: 100%;
   padding: 10px 30px;
   background-color: #FAFAFA;
@@ -9,7 +9,8 @@
   height: 100%;
   width: 100%;
   position: relative;
-  border: 2px solid purple;
+  border-radius: 16px;
+  border-bottom: 4px solid #7C6A46;
 }
 
 /* Baner bg content styleing */
@@ -22,6 +23,7 @@
 .swiper_container {
   height: 100%;
   width: 100%;
+  border-radius: 16px;
 }
 
 .baner_bg_image_main_container img {
@@ -37,7 +39,8 @@
   width: 100%;
   position: absolute;
   top: 0px;
-  z-index: 77;
+  z-index: 10;
+  border-radius: 16px;
   background: linear-gradient(90.00deg, #151515,#1515151a 100%);
 }
 
@@ -52,7 +55,7 @@
   padding: 0 50px;
   position: absolute;
   top: 0px;
-  z-index: 88;
+  z-index: 20;
 }
 
 .baner_left_contect_container {

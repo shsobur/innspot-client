@@ -1,0 +1,14 @@
+.main_footer_outer_container {
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  padding: 20px 30px;
+  background-color: #7C6A46;
+  border: 2px solid purple;
+}
+
+.main_footer_inner_container {
+  height: 100%;
+  width: 100%;
+  border: 2px solid tomato;
+}
