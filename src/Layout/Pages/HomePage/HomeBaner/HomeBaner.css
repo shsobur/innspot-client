@@ -8,7 +8,40 @@
 .main_baner_inner_container {
   height: 100%;
   width: 100%;
+  position: relative;
+  border: 2px solid purple;
 }
+
+/* Baner bg content styleing */
+
+.baner_bg_image_main_container {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper_container {
+  height: 100%;
+  width: 100%;
+}
+
+.baner_bg_image_main_container img {
+  height: 100%;
+  width: 100%;
+}
+/* Baner bg content end */
+
+/* Baner OverLay__ */
+
+.baner_bg_overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 77;
+  background: linear-gradient(90.00deg, #151515cd,#1515151a 100%);
+}
+
+/* Baner OverLay__ end */
 
 .main_baner_content_container {
   height: 100%;
@@ -16,6 +49,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 50px;
+  position: absolute;
+  top: 0px;
+  z-index: 88;
 }
 
 .baner_left_contect_container {
@@ -36,14 +73,14 @@
 
 .baner_left_contect_container h1 {
   font-family: "Dancing Script", serif;
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: 600;
   color: #7C6A46;
 }
 
 .baner_left_contect_container h2 {
   font-family: "Raleway", serif;
-  color: #1C1C1C;
+  color: #ffffff;
   font-size: 3.8rem;
   font-weight: 700;
   padding: 25px 0;
@@ -71,4 +108,8 @@
   transition: 0.3s ease-in-out;
   color: #f2f2f2;
   background-color: #927f59;
+}
+
+.swiper_mini_container {
+  border-radius: 16px;
 }
