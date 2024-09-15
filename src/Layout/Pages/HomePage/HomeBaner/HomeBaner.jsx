@@ -18,7 +18,6 @@ const HomeBaner = () => {
       <div className="main_container">
         <div className="main_baner_outer_container">
           <div className="main_baner_inner_container">
-
             <div className="baner_bg_image_main_container">
               <Swiper
                 loop={true}
@@ -52,7 +51,12 @@ const HomeBaner = () => {
 
             <div className="main_baner_content_container">
               {/* __Baner right side content__ */}
-              <div className="baner_left_contect_container">
+              <div
+                data-aos="fade-right"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="baner_left_contect_container"
+              >
                 <h1>Paradise View</h1>
                 <h2>Hotel for every moment rich in emotion</h2>
                 <p>Every moment feels like the first time in paradise view</p>
@@ -60,7 +64,12 @@ const HomeBaner = () => {
               </div>
 
               {/* __Baner left side content__ */}
-              <div className="baner_right_contect_container">
+              <div
+                data-aos="fade-right"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="baner_right_contect_container"
+              >
                 <Swiper
                   loop={true}
                   slidesPerView={1}
@@ -89,9 +98,7 @@ const HomeBaner = () => {
                 </Swiper>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     </>
