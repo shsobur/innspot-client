@@ -1,4 +1,5 @@
 import "./Footer.css";
+import logoImg from "../../../assets/logo/transparency_logo.png";
 
 const Footer = () => {
   return (
@@ -10,11 +11,11 @@ const Footer = () => {
             <div className="main_footer_contant_container">
 
               <div className="footer_main_title_container">
-                <div>
-                  <img src="" alt="logo" />
+                <div className="footer_logo_title_container">
+                  <img src={logoImg} alt="logo" />
                   <h2>NNSOPT</h2>
                 </div>
-                <p></p>
+                <p>The service at the Hotel Monteleone was exceptional. There was absolutely no issue that was not addressed timely and with satisfactory results. We were particulary impressed with how the hotel staff anticipated our needs (periodically coming by the Board Room to check with us)</p>
               </div>
 
               <div className="footer_info_container">
@@ -43,16 +44,18 @@ const Footer = () => {
                 </div>
               </div>
 
+              <div className="footer_newslist_container">
               <div className="footer_info_inner_content_container">
                 <h3>Newsletter</h3>
                 <p>Kindly subscribe to our newsletter to get
                   latest deals on our rooms and vacation
                   discount.
                 </p>
-                <div>
+                <div className="footer_sub_input_container">
                   <input type="text" placeholder="Enter your email" />
                   <button>Subscribe</button>
                 </div>
+              </div>
               </div>
 
             </div>

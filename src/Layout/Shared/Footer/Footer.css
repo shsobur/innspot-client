@@ -10,5 +10,118 @@
 .main_footer_inner_container {
   height: 100%;
   width: 100%;
+  padding: 50px 0;
   border: 2px solid tomato;
+}
+
+.main_footer_contant_container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+
+
+
+
+/* All "main footer" container style__ */
+
+.footer_main_title_container {
+  width: 30%;
+  border: 2px solid purple;
+}
+
+.footer_info_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  border: 2px solid forestgreen;
+}
+
+.footer_newslist_container {
+  width: 30%;
+  border: 2px solid rgb(230, 223, 10);
+}
+
+/* All main footer container style__ end */
+
+
+
+
+
+/* 1'st container styleing__ */
+
+.footer_logo_title_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footer_logo_title_container img {
+  height: 50px;
+  width: 50px;
+}
+
+.footer_logo_title_container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Raleway", serif;
+}
+
+.footer_main_title_container p {
+  font-size: 1.1rem;
+  padding: 20px 0;
+  font-family: "Dancing Script", serif;
+}
+
+
+
+
+/* 2'st and 3'th container styleing__ */
+
+.footer_info_inner_content_container h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-bottom: 30px;
+  font-family: "Raleway", serif;
+}
+
+.footer_info_inner_content_container p {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Raleway", serif;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+
+
+/* 3'st container input styleing__ */
+
+.footer_sub_input_container {
+  position: relative;
+}
+
+.footer_sub_input_container input {
+  width: 100%;
+  padding: 12px 10px;
+  padding-right: 130px;
+  border-radius: 12px;
+  outline: none;
+  color: #151515;
+}
+
+.footer_sub_input_container button {
+  padding: 6px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  background-color: #7C6A46;
+  position: absolute;
+  right: 5px;
+  top: 6px;
+}
+
+.footer_sub_input_container button:active {
+  background-color: #6c5c3c;
 }
