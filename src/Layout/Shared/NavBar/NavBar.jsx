@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <>
       <div>
-        <nav className="relative bg-white shadow dark:bg-gray-800">
+        <nav className="relative bg-white border-b-2 border-[#7c6a46] shadow dark:bg-gray-800">
           <div className="container px-6 py-4 mx-auto">
             <div className="lg:flex lg:items-center lg:justify-between">
 
