@@ -7,7 +7,8 @@
 .main_facilities_inner_container {
   height: 100%;
   width: 100%;
-  border: 2px solid purple;
+  margin-top: 100px;
+  /* border: 2px solid purple; */
 }
 
 .facilities_title_container {
@@ -30,19 +31,20 @@
 
 .facilities_main_section {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  border: 2px solid tomato;
+  margin-top: 50px;
 }
 
 /* Facilities section main container style__ */
 
 .facilities_section_item_container {
-  height: 200px;
+  height: auto;
   width: 100%;
-  border: 2px solid #ae05be;
+  padding: 0 20px;
+  /* border: 2px solid #ae05be; */
 }
 
 /* Facilities section main container style__end */
@@ -62,14 +64,36 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  border: 2px solid black;
+  padding: 30px 10px;
+  border-top: 1px solid #7C6A46;
 }
 
 .facilities_name_container {
-  border: 2px solid aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-bottom: 2px solid transparent;
 }
 
-/* #facilities_box_1 {
-  grid-column-start: ;
-  grid-column-end: ;
-} */
+.facilities_name_container:hover {
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px solid #7C6A46;
+}
+
+.facilities_name_container h2 {
+  font-size: 1.8rem;
+  padding: 10px 0;
+  color: #7C6A46;
+}
+
+.facilities_name_container p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #7C6A46;
+  font-family: "Raleway", serif;
+}
