@@ -96,3 +96,49 @@
   color: blue;
   text-decoration: underline;
 }
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1536px) {
+  .main_authentication_form_outer_container {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .main_authentication_form_outer_container {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main_authentication_form_outer_container {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main_authentication_form_outer_container {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .authentaction_form_logo_container h3 {
+    font-size: 2rem;
+  }
+
+  .main_authentication_form_outer_container {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .authentaction_form_logo_container h3 {
+    font-size: 1.8rem;
+  }
+
+  .main_authentication_form_outer_container {
+    width: 90%;
+  }
+}

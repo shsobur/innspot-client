@@ -36,3 +36,15 @@
   font-family: "Raleway", serif;
   font-size: 1.2rem;
 }
+
+/* Resopnsive style__ */
+
+@media screen and (max-width: 640px) {
+  .social_login_btn h3 {
+    font-size: 1.6rem;
+  }
+
+  .social_login_btn h2  {
+    font-size: 1rem;
+  }
+}
