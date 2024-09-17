@@ -12,12 +12,8 @@ const Facilities = () => {
       <div className="main_container">
         <div className="main_facilities_outer_container">
           <div className="main_facilities_inner_container">
-
             <div className="main_facilities_content_container">
               <div
-                // data-aos="zoom-in"
-                // data-aos-easing="linear"
-                // data-aos-duration="1000"
                 className="facilities_title_container"
               >
                 <h2>Our Facilities</h2>
@@ -27,13 +23,22 @@ const Facilities = () => {
               </div>
 
               <div className="facilities_main_section">
-                
-                <div id="section_item_container_1" className="facilities_section_item_container">
+
+                <div
+                  data-aos="fade-right"
+                  data-aos-easing="linear"
+                  data-aos-duration="1000"
+                  id="section_item_container_1"
+                  className="facilities_section_item_container"
+                >
                   <div className="facilities_section_item_title">
                     <h2>Regular</h2>
                   </div>
 
-                  <div id="facilities_name_container_1" className="main_facilities_name_container">
+                  <div
+                    id="facilities_name_container_1"
+                    className="main_facilities_name_container"
+                  >
                     <div className="facilities_name_container">
                       <h2>
                         <FaWifi />
@@ -71,7 +76,13 @@ const Facilities = () => {
                   </div>
                 </div>
 
-                <div id="section_item_container_2" className="facilities_section_item_container">
+                <div
+                  data-aos="fade-right"
+                  data-aos-easing="linear"
+                  data-aos-duration="1000"
+                  id="section_item_container_2"
+                  className="facilities_section_item_container"
+                >
                   <div className="facilities_section_item_title">
                     <h2>Suite</h2>
                   </div>
@@ -131,12 +142,21 @@ const Facilities = () => {
                   </div>
                 </div>
 
-                <div id="section_item_container_3" className="facilities_section_item_container">
+                <div
+                  data-aos="fade-right"
+                  data-aos-easing="linear"
+                  data-aos-duration="1000"
+                  id="section_item_container_3"
+                  className="facilities_section_item_container"
+                >
                   <div className="facilities_section_item_title">
-                    <h2>VIP</h2>
+                    <h2>V.I.P</h2>
                   </div>
 
-                  <div id="facilities_name_container_3" className="main_facilities_name_container">
+                  <div
+                    id="facilities_name_container_3"
+                    className="main_facilities_name_container"
+                  >
                     <div className="facilities_name_container">
                       <h2>
                         <IoGameController />
@@ -197,7 +217,6 @@ const Facilities = () => {
 
               </div>
             </div>
-
           </div>
         </div>
       </div>

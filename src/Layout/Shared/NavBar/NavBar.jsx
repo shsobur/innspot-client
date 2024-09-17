@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logoImg from "../../../assets/logo/logo.png"
+import logoImg from "../../../assets/logo/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { HiBars3 } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
@@ -13,14 +13,9 @@ const NavBar = () => {
         <nav className="relative bg-white border-b-2 border-[#7c6a46] shadow dark:bg-gray-800">
           <div className="container px-6 py-4 mx-auto">
             <div className="lg:flex lg:items-center lg:justify-between">
-
               <div className="flex items-center justify-between">
                 <div className="flex items-center" href="#">
-                  <img
-                    className="w-8 h-auto sm:h-7"
-                    src={logoImg}
-                    alt="logo"
-                  />
+                  <img className="w-8 h-auto sm:h-7" src={logoImg} alt="logo" />
                   <span className="font-bold text-xl">NNSPOT</span>
                 </div>
 
@@ -53,46 +48,56 @@ const NavBar = () => {
                     : "opacity-0 -translate-x-full"
                 }`}
               >
-
                 <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
-                  <NavLink
-                    to="#"
-                    className="px-3 py-2 mx-3 mt-2 font-semibold text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <p
+                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Home
-                  </NavLink>
+                    <NavLink
+                      to="/"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#7C6A46] underline"
+                          : "text-[#151515] "
+                      }
+                    >
+                      Home
+                    </NavLink>
+                  </p>
 
-                  <NavLink
-                    to="#"
-                    className="px-3 py-2 mx-3 mt-2 font-semibold text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <p
+                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Rooms
-                  </NavLink>
+                    <NavLink>
+                      Room
+                    </NavLink>
+                  </p>
 
-                  <NavLink
-                    to="#"
-                    className="px-3 py-2 mx-3 mt-2 font-semibold text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <p
+                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    My Bookings
-                  </NavLink>
+                    <NavLink>
+                      My Booking
+                    </NavLink>
+                  </p>
 
-                  <NavLink
-                    to="#"
-                    className="px-3 py-2 mx-3 mt-2 font-semibold text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <p
+                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    About Us
-                  </NavLink>
+                    <NavLink>
+                      About Us
+                    </NavLink>
+                  </p>
 
-                  <NavLink
-                    to="#"
-                    className="px-3 py-2 mx-3 mt-2 font-semibold text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <p
+                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Contact Us
-                  </NavLink>
+                    <NavLink>
+                      Contact Us
+                    </NavLink>
+                  </p>
                 </div>
 
                 <div className="flex items-center mt-4 lg:mt-0">
-                  
                   <button
                     type="button"
                     className="flex items-center focus:outline-none"
@@ -114,7 +119,9 @@ const NavBar = () => {
                   <button
                     className="hidden mx-4 font-semibold text-gray-600 transition-colors duration-300 transform lg:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none "
                     aria-label="show notifications"
-                  ><Link>Sign In</Link></button>
+                  >
+                    <Link to="/signin">Sign In</Link>
+                  </button>
                 </div>
 
               </div>

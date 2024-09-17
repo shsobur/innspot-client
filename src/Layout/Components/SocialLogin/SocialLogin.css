@@ -1,0 +1,38 @@
+.main_social_outer_container {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.social_login_btn {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: 2px solid #7c6a46;
+}
+
+.social_login_btn:hover {
+  background-color: #f7f7f7;
+}
+.social_login_btn:active {
+  background-color: #eeeeee;
+}
+
+.social_login_btn h3 {
+  font-size: 1.8rem;
+}
+
+.social_login_btn h2 {
+  color: #151515;
+  font-weight: 600;
+  font-family: "Raleway", serif;
+  font-size: 1.2rem;
+}

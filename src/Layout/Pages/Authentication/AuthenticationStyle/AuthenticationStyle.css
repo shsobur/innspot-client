@@ -1,0 +1,98 @@
+.main_authentication_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.main_authentication_form_outer_container {
+  height: auto;
+  width: 30%;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #7C6A46;
+}
+
+
+/* From title container content style__ */
+
+.authentaction_form_logo_container {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authentaction_form_logo_container img {
+  height: auto;
+  width: 40px;
+}
+
+.authentaction_form_logo_container h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #7C6A46;
+  font-family: "Dancing Script", serif;
+}
+
+/* Form container content style__ */
+
+.main_form_container {
+  width: 100%;
+  /* border: 2px solid peru; */
+}
+
+.form_single_input_container input {
+  width: 100%;
+  margin: 10px 0;
+  outline: none;
+  padding: 10px 10px;
+  border-radius: 8px;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  box-shadow: #32325d40 0px 2px 5px -1px, #0000004d 0px 1px 3px -1px;
+}
+
+.form_single_input_container input:focus {
+  box-shadow: none;
+  transition: 0.5s ease-in;
+  border-left: 2px solid #7C6A46;
+  border-bottom: 2px solid #7C6A46;
+}
+
+.form_sub_button {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+  font-family: "Raleway", serif;
+}
+
+.form_sub_button input {
+  width: 100%;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: #7C6A46;
+}
+
+.form_sub_button input:hover {
+  transition: 0.2s ease-in;
+  background-color: #695b3d;
+}
+
+.page_link_container {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 500;
+  font-family: "Raleway", serif;
+}
+
+.page_link_container span {
+  color: blue;
+  text-decoration: underline;
+}
