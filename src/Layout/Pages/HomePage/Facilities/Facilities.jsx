@@ -28,12 +28,12 @@ const Facilities = () => {
 
               <div className="facilities_main_section">
                 
-                <div className="facilities_section_item_container">
+                <div id="section_item_container_1" className="facilities_section_item_container">
                   <div className="facilities_section_item_title">
                     <h2>Regular</h2>
                   </div>
 
-                  <div className="main_facilities_name_container">
+                  <div id="facilities_name_container_1" className="main_facilities_name_container">
                     <div className="facilities_name_container">
                       <h2>
                         <FaWifi />
@@ -71,13 +71,13 @@ const Facilities = () => {
                   </div>
                 </div>
 
-                <div className="facilities_section_item_container">
+                <div id="section_item_container_2" className="facilities_section_item_container">
                   <div className="facilities_section_item_title">
                     <h2>Suite</h2>
                   </div>
 
                   <div
-                    id="facilities_center_container"
+                    id="facilities_name_container_2"
                     className="main_facilities_name_container"
                   >
                     <div className="facilities_name_container">
@@ -131,12 +131,12 @@ const Facilities = () => {
                   </div>
                 </div>
 
-                <div className="facilities_section_item_container">
+                <div id="section_item_container_3" className="facilities_section_item_container">
                   <div className="facilities_section_item_title">
                     <h2>VIP</h2>
                   </div>
 
-                  <div className="main_facilities_name_container">
+                  <div id="facilities_name_container_3" className="main_facilities_name_container">
                     <div className="facilities_name_container">
                       <h2>
                         <IoGameController />

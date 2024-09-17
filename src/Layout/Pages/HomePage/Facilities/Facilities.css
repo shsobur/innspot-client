@@ -8,7 +8,6 @@
   height: 100%;
   width: 100%;
   margin-top: 100px;
-  /* border: 2px solid purple; */
 }
 
 .facilities_title_container {
@@ -96,4 +95,127 @@
   font-weight: 600;
   color: #7C6A46;
   font-family: "Raleway", serif;
+}
+
+/* Responsive style__ */
+
+
+
+@media screen and (max-width: 1536px) {
+  .facilities_section_item_container {
+    padding: 0 10px;
+  }
+
+  .main_facilities_name_container {
+    padding: 30px 0;
+  }
+
+  .facilities_name_container h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .facilities_title_container h2 {
+    font-size: 3.2rem;
+  }
+
+  .facilities_main_section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+
+  #section_item_container_1 {
+    grid-column-start: 1;
+    grid-column-end: 7;
+  }
+
+  #section_item_container_2 {
+    grid-column-start: 7;
+    grid-column-end: -1;
+  }
+
+  #section_item_container_3 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .facilities_title_container h2 {
+    font-size: 3rem;
+  }
+
+  .facilities_section_item_title h2 {
+    font-size: 2.3rem;
+  }
+
+  #facilities_name_container_1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #facilities_name_container_2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .facilities_main_section {
+    gap: 10px;
+  }
+
+  .facilities_name_container p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .facilities_title_container h2 {
+    font-size: 2.8rem;
+  }
+
+  .facilities_title_container p {
+    font-size: 14px;
+  }
+
+  .facilities_section_item_title h2 {
+    font-size: 2rem;
+  }
+
+  #section_item_container_1 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  #section_item_container_2 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  #section_item_container_3 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .main_facilities_outer_container {
+    padding: 0 20px;
+  }
+
+  .facilities_title_container h2 {
+    font-size: 2.4rem;
+  }
+
+  .facilities_section_item_title h2 {
+    font-size: 1.8rem;
+  }
+
+  #facilities_name_container_3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

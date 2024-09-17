@@ -59,6 +59,13 @@ const NavBar = () => {
                     to="#"
                     className="px-3 py-2 mx-3 mt-2 font-semibold text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
+                    Home
+                  </NavLink>
+
+                  <NavLink
+                    to="#"
+                    className="px-3 py-2 mx-3 mt-2 font-semibold text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
                     Rooms
                   </NavLink>
 
