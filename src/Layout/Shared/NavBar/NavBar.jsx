@@ -1,11 +1,41 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logoImg from "../../../assets/logo/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { HiBars3 } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
+import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import { IoMdContact } from "react-icons/io";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+
+  const userImage = user?.photoURL;
+
+  const handleSignOut = () => {
+    // Sweet Alert to log out__
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to logout!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#7c6a46",
+      confirmButtonText: "Yes, logout!",
+    }).then((result) => {
+      // Confirmation to logout__
+      if (result.isConfirmed) {
+        logOut().then(() => {
+          Swal.fire({
+            title: "Loged Out!",
+            text: "Loged out successfully",
+            icon: "success",
+          });
+        });
+      }
+    });
+  };
 
   return (
     <>
@@ -50,6 +80,7 @@ const NavBar = () => {
               >
                 <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
                   <p
+                    onClick={() => setIsOpen(!isOpen)}
                     className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <NavLink
@@ -65,65 +96,93 @@ const NavBar = () => {
                   </p>
 
                   <p
+                    onClick={() => setIsOpen(!isOpen)}
                     className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <NavLink>
-                      Room
-                    </NavLink>
+                    <NavLink>Room</NavLink>
                   </p>
 
                   <p
+                    onClick={() => setIsOpen(!isOpen)}
                     className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <NavLink>
-                      My Booking
-                    </NavLink>
+                    <NavLink>My Booking</NavLink>
                   </p>
 
                   <p
+                    onClick={() => setIsOpen(!isOpen)}
                     className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <NavLink>
-                      About Us
-                    </NavLink>
+                    <NavLink>About Us</NavLink>
                   </p>
 
                   <p
+                    onClick={() => setIsOpen(!isOpen)}
                     className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <NavLink>
-                      Contact Us
-                    </NavLink>
+                    <NavLink>Contact Us</NavLink>
                   </p>
                 </div>
 
-                <div className="flex items-center mt-4 lg:mt-0">
+                <div className=" lg:flex lg:items-center mt-4 lg:mt-0">
                   <button
                     type="button"
                     className="flex items-center focus:outline-none"
                     aria-label="toggle profile dropdown"
                   >
-                    <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-                      <img
-                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                        className="object-cover w-full h-full"
-                        alt="avatar"
-                      />
+                    <div className="overflow-hidden">
+                      <div>
+                        {user &&
+                          (userImage ? (
+                            <div>
+                              <img
+                                className="h-10 w-10 border-2 border-[#7c6a46] rounded-full"
+                                src={userImage}
+                                alt="user img"
+                              />
+                            </div>
+                          ) : (
+                            <div className="text-3xl text-[#7c6a46]">
+                              <IoMdContact />
+                            </div>
+                          ))}
+                      </div>
                     </div>
 
                     <h3 className="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">
-                      Khatab wedaa
+                      {user?.displayName}
                     </h3>
                   </button>
 
-                  <button
-                    className="hidden mx-4 font-semibold text-gray-600 transition-colors duration-300 transform lg:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none "
-                    aria-label="show notifications"
-                  >
-                    <Link to="/signin">Sign In</Link>
-                  </button>
-                </div>
+                  <div className="text-lg mt-5 font-semibold text-gray-700 dark:text-gray-200 lg:hidden">
+                    {user ? (
+                      <button onClick={handleSignOut}>Sing Out</button>
+                    ) : (
+                      <button onClick={() => setIsOpen(!isOpen)}>
+                        <Link to="/signin">Sing In</Link>
+                      </button>
+                    )}
+                  </div>
 
+                  <div>
+                    {user ? (
+                      <button
+                        onClick={handleSignOut}
+                        className="hidden mx-4 font-semibold text-gray-600 transition-colors duration-300 transform lg:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none "
+                        aria-label="show notifications"
+                      >
+                        <p>Sign Out</p>
+                      </button>
+                    ) : (
+                      <button
+                        className="hidden mx-4 font-semibold text-gray-600 transition-colors duration-300 transform lg:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none "
+                        aria-label="show notifications"
+                      >
+                        <Link to="/signin">Sign In</Link>
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

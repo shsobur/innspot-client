@@ -1,6 +1,6 @@
 import "../AuthenticationStyle/AuthenticationStyle.css";
 import logoImg from "../../../../assets/logo/transparency_logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { signUpUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -37,7 +38,7 @@ const SignUp = () => {
           toast: true,
           position: "top",
           showConfirmButton: false,
-          timer: 1000,
+          timer: 2000,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.onmouseenter = Swal.stopTimer;
@@ -46,8 +47,10 @@ const SignUp = () => {
         });
         Toast.fire({
           icon: "success",
-          title: "Signed in successfully"
+          title: "Signed up successfully"
         });
+
+        navigate("/");
 
       })
       .catch(error => {

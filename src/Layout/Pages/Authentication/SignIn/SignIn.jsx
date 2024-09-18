@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../AuthenticationStyle/AuthenticationStyle.css";
 import logoImg from "../../../../assets/logo/transparency_logo.png";
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
+  const { signInUser } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -16,6 +23,34 @@ const SignIn = () => {
     const password = data.password;
 
     console.log(email, password);
+
+    signInUser(email, password)
+    .then(result => {
+      console.log(result.user)
+
+      // Sweet Alert__
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully"
+      });
+
+      navigate("/");
+    })
+    .catch(error => {
+      setError("Invalid! user or password. Try again")
+      console.log("Sing in erroe: ", error)
+    })
   }
 
   return (
@@ -74,6 +109,8 @@ const SignIn = () => {
                 <div className="form_sub_button">
                   <input type="submit" value="Sign In" />
                 </div>
+
+                <div className="text-red-600 pb-5"><span>{error}</span></div>
 
                 <div className="page_link_container">
                   <p>
