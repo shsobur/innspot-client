@@ -1,0 +1,116 @@
+.main_featured_outer_container {
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+  font-family: "Raleway", serif;
+}
+
+.main_featured_inner_container {
+  height: 100%;
+  width: 100%;
+  padding: 0 30px;
+  border: 2px solid tomato;
+}
+
+.featured_title_container h2 {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #7C6A46;
+  font-family: "Dancing Script", serif;
+}
+
+.featured_title_container p {
+  font-weight: 500;
+  font-size: 1.1rem ;
+  text-align: center;
+}
+
+.featured_main_content_container {
+  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 50px;
+  padding: 50px 100px;
+  border-radius: 8px;
+  background-color: #f6f6f6;
+}
+
+.featured_image_container {
+  height: 300px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 4px solid #7C6A46;
+}
+
+.featured_image_container h2 {
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 150px;
+  color: transparent;
+}
+
+.featured_image_container h2:hover {
+  transition: 0.5s ease-in-out;
+  color: #ffffff;
+  background: linear-gradient(360.00deg, #151515cb,#15151500 100%);
+}
+
+#fectured_image_section_1 {
+  width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  background-image: url("https://i.ibb.co.com/JFbczCf/Be-Funky-collage.png");
+}
+
+#fectured_image_section_2 {
+  width: 100%;
+  grid-column-start: 6;
+  grid-column-end: -1;
+  background-image: url("https://i.ibb.co.com/nQ9vzRY/point3d-commercial-imaging-ltd-oxe-CZrodz78-unsplash.png");
+}
+
+#fectured_image_section_3 {
+  width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 7;
+  background-image: url("https://i.ibb.co.com/6m8m6LG/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.png");
+}
+
+#fectured_image_section_4 {
+  width: 100%;
+  grid-column-start: 7;
+  grid-column-end: -1;
+  background-image: url("https://i.ibb.co.com/t3tJtHV/frames-for-your-heart-Fqqi-Av-Jejto-unsplash.png");
+}
+
+.featured_btn_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.featured_btn_container button {
+  font-weight: 600;
+  color: #ffffff;
+  margin: 20px 0;
+  padding: 10px 30px;
+  background-color: #7C6A46;
+}
+
+.featured_btn_container button:hover {
+  color: #f2f2f2;
+  background-color: #927f59;
+}
+
+.featured_btn_container button:active {
+  color: #f2f2f2;
+  background-color: #847350;
+}

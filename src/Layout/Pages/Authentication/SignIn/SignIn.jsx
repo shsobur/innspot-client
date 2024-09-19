@@ -6,11 +6,18 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { IoEyeOutline } from "react-icons/io5";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
   const [error, setError] = useState(null);
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
+
+  const handleShowPassword = () => {
+    setShowPass(!showPass);
+  };
 
   const {
     register,
@@ -25,33 +32,33 @@ const SignIn = () => {
     console.log(email, password);
 
     signInUser(email, password)
-    .then(result => {
-      console.log(result.user)
+      .then((result) => {
+        console.log(result.user);
 
-      // Sweet Alert__
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        }
-      });
-      Toast.fire({
-        icon: "success",
-        title: "Signed in successfully"
-      });
+        // Sweet Alert__
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
 
-      navigate("/");
-    })
-    .catch(error => {
-      setError("Invalid! user or password. Try again")
-      console.log("Sing in erroe: ", error)
-    })
-  }
+        navigate("/");
+      })
+      .catch((error) => {
+        setError("Invalid! user or password. Try again");
+        console.log("Sing in erroe: ", error);
+      });
+  };
 
   return (
     <>
@@ -91,12 +98,30 @@ const SignIn = () => {
                 </div>
 
                 <div className="form_single_input_container">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter Your Password"
-                    {...register("password", { required: true })}
-                  />
+                  <div id="password_show_icon_outer_container">
+                    <input
+                      type={showPass ? "text" : "password"}
+                      name="password"
+                      placeholder="Enter Your Password"
+                      {...register("password", { required: true })}
+                    />
+
+                    <div
+                      onClick={handleShowPassword}
+                      id="password_show_icon_inner_container"
+                    >
+                      {showPass ? (
+                        <p>
+                          <IoEyeOutline />
+                        </p>
+                      ) : (
+                        <p>
+                          <FaRegEyeSlash />
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
                   <div>
                     {errors.password && (
                       <span className="text-sm text-red-500">
@@ -110,7 +135,9 @@ const SignIn = () => {
                   <input type="submit" value="Sign In" />
                 </div>
 
-                <div className="text-red-600 pb-5"><span>{error}</span></div>
+                <div className="text-red-600 pb-5">
+                  <span>{error}</span>
+                </div>
 
                 <div className="page_link_container">
                   <p>

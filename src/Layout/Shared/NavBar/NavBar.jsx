@@ -142,7 +142,7 @@ const NavBar = () => {
                               />
                             </div>
                           ) : (
-                            <div className="text-3xl text-[#7c6a46]">
+                            <div className="text-4xl text-[#7c6a46]">
                               <IoMdContact />
                             </div>
                           ))}

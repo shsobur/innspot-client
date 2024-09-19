@@ -3,13 +3,20 @@ import logoImg from "../../../../assets/logo/transparency_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { IoEyeOutline } from "react-icons/io5";
 
 const SignUp = () => {
-  const { signUpUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [showPass, setShowPass] = useState(false);
+  const { signUpUser, updateUserProfile } = useContext(AuthContext);
+
+  const handleShowPassword = () => {
+    setShowPass(!showPass);
+  };
 
   const {
     register,
@@ -26,41 +33,38 @@ const SignUp = () => {
     console.log(name, photo, email, password);
 
     signUpUser(email, password)
-    .then(result => {
-      console.log(result.user)
+      .then((result) => {
+        console.log(result.user);
 
-      // Updateing user profile__
-      updateUserProfile(name, photo)
-      .then(() => {
+        // Updateing user profile__
+        updateUserProfile(name, photo)
+          .then(() => {
+            // Sweet Alert__
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top",
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              },
+            });
+            Toast.fire({
+              icon: "success",
+              title: "Signed up successfully",
+            });
 
-        // Sweet Alert__
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          }
-        });
-        Toast.fire({
-          icon: "success",
-          title: "Signed up successfully"
-        });
-
-        navigate("/");
-
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log("Update profile error", error);
+          });
       })
-      .catch(error => {
-        console.log("Update profile error", error)
-      })
-
-    })
-    .catch(error => {
-      console.log("Sing Up error:", error)
-    })
+      .catch((error) => {
+        console.log("Sing Up error:", error);
+      });
   };
 
   return (
@@ -130,16 +134,33 @@ const SignUp = () => {
                 </div>
 
                 <div className="form_single_input_container">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter Your Password"
-                    {...register("password", {
-                      required: true,
-                      minLength: 8,
-                      pattern: /^(?=.*[a-z])(?=.*[A-Z]).*$/,
-                    })}
-                  />
+                  <div id="password_show_icon_outer_container">
+                    <input
+                      type={showPass ? "text" : "password"}
+                      name="password"
+                      placeholder="Enter Your Password"
+                      {...register("password", {
+                        required: true,
+                        minLength: 8,
+                        pattern: /^(?=.*[a-z])(?=.*[A-Z]).*$/,
+                      })}
+                    />
+
+                    <div
+                      onClick={handleShowPassword}
+                      id="password_show_icon_inner_container"
+                    >
+                      {showPass ? (
+                        <p>
+                          <IoEyeOutline />
+                        </p>
+                      ) : (
+                        <p>
+                          <FaRegEyeSlash />
+                        </p>
+                      )}
+                    </div>
+                  </div>
 
                   {/* handleing password field error__ */}
                   <div>
@@ -167,7 +188,6 @@ const SignUp = () => {
                     )}
                   </div>
                   {/* handleing password field error__end */}
-
                 </div>
 
                 <div className="form_sub_button">

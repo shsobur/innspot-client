@@ -1,4 +1,5 @@
 import Facilities from "../Facilities/Facilities";
+import FeaturedRooms from "../FeaturedRooms/FeaturedRooms";
 import HomeBaner from "../HomeBaner/HomeBaner";
 
 const HomePageLayout = () => {
@@ -6,6 +7,7 @@ const HomePageLayout = () => {
     <div>
       <HomeBaner></HomeBaner>
       <Facilities></Facilities>
+      <FeaturedRooms></FeaturedRooms>
     </div>
   );
 };

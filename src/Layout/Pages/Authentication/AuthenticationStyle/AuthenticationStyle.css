@@ -41,8 +41,28 @@
 
 .main_form_container {
   width: 100%;
-  /* border: 2px solid peru; */
 }
+
+
+
+/* Password Show Icon Style__ */
+
+#password_show_icon_outer_container {
+  position: relative;
+}
+
+#password_show_icon_inner_container {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 2px 10px;
+}
+
+/* Password Show Icon Style__END */
+
+
 
 .form_single_input_container input {
   width: 100%;
