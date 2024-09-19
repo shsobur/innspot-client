@@ -1,4 +1,5 @@
 import "./Footer.css";
+import ScrollToTop from "react-scroll-to-top";
 import logoImg from "../../../assets/logo/transparency_logo.png";
 
 const Footer = () => {
@@ -6,6 +7,14 @@ const Footer = () => {
 
   return (
     <>
+      <ScrollToTop 
+        smooth="true" 
+        top={1000} 
+        color="#7c6a46" 
+        height="20px" 
+        width="38px"
+      />
+
       <div className="main_container">
         <div className="main_footer_outer_container">
           <div className="main_footer_inner_container">
