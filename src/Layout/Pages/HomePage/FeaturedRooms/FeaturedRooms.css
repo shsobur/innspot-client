@@ -9,8 +9,10 @@
   height: 100%;
   width: 100%;
   padding: 0 30px;
-  border: 2px solid tomato;
 }
+
+
+/* Featured title style__ */
 
 .featured_title_container h2 {
   text-align: center;
@@ -25,6 +27,9 @@
   font-size: 1.1rem ;
   text-align: center;
 }
+
+/* Featured title style__end */
+
 
 .featured_main_content_container {
   gap: 20px;
@@ -62,6 +67,9 @@
   background: linear-gradient(360.00deg, #151515cb,#15151500 100%);
 }
 
+
+/* Fecatured image section style__ */
+
 #fectured_image_section_1 {
   width: 100%;
   grid-column-start: 1;
@@ -90,11 +98,14 @@
   background-image: url("https://i.ibb.co.com/t3tJtHV/frames-for-your-heart-Fqqi-Av-Jejto-unsplash.png");
 }
 
+/* Fecatured image section style__end */
+
+
 .featured_btn_container {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .featured_btn_container button {
@@ -113,4 +124,147 @@
 .featured_btn_container button:active {
   color: #f2f2f2;
   background-color: #847350;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .featured_title_container h2 {
+    font-size: 3.2rem;
+  }
+
+  .featured_main_content_container {
+    padding: 50px 80px;
+  }
+
+  .featured_image_container {
+    height: 280px;
+  }
+
+  .featured_image_container h2 {
+    padding-top: 120px;
+    font-size: 2.8rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .featured_title_container h2 {
+    font-size: 3rem;
+  }
+
+  .featured_title_container p {
+    font-size: 1rem;
+  }
+
+  .featured_main_content_container {
+    padding: 50px 40px;
+  }
+
+  .featured_image_container {
+    height: 230px;
+  }
+
+  .featured_image_container h2 {
+    padding-top: 80px;
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .featured_title_container h2 {
+    font-size: 2.8rem;
+  }
+
+  .featured_title_container p {
+    font-size: 14px;
+  }
+
+  .featured_main_content_container {
+    padding: 50px 20px;
+  }
+
+  .featured_image_container {
+    height: 200px;
+  }
+
+  .featured_image_container h2 {
+    color: #ffffff;
+    padding-top: 60px;
+    font-size: 2.2rem;
+    background: linear-gradient(360.00deg, #151515cb,#15151500 100%);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main_featured_inner_container {
+    padding: 20px;
+  }
+
+  .featured_main_content_container {
+    padding: 40px 20px;
+  }
+
+  .featured_title_container h2 {
+    font-size: 2.6rem;
+  }
+
+  #fectured_image_section_1 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #fectured_image_section_2 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #fectured_image_section_3 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #fectured_image_section_4 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  .featured_image_container h2 {
+    padding-top: 80px;
+    font-size: 2rem;
+  }
+
+  .featured_btn_container button {
+    font-weight: 500;
+    color: #ffffff;
+    margin: 10px 0;
+    padding: 8px 20px;
+    background-color: #7C6A46;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .featured_main_content_container {
+    padding: 30px 10px;
+  }
+
+  .featured_title_container h2 {
+    font-size: 2.4rem;
+  }
+
+  .featured_image_container h2 {
+    padding-top: 50px;
+    font-size: 1.8rem;
+  }
+
+  .featured_image_container {
+    height: 150px;
+  }
+
+  .featured_btn_container button {
+    font-weight: 500;
+    color: #ffffff;
+    margin: 10px 0;
+    padding: 6px 20px;
+    background-color: #7C6A46;
+  }
 }
