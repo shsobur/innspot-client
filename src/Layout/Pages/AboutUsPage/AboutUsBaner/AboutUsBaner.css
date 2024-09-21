@@ -1,0 +1,114 @@
+.aboutus_baner_outer_container {
+  height: 85vh;
+  width: 100%;
+  padding: 10px 30px;
+}
+
+.aboutus_baner_inner_container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url("https://i.ibb.co.com/6m8m6LG/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.png");
+}
+
+/* BG overlay */
+
+.aboutus_bg_overlay {
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  position: absolute;
+  border-radius: 16px; 
+  background-color: #000000b5;
+}
+
+/* About Us baner Title content style__ */
+
+.main_aboutus_baner_title_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  position: absolute;
+  z-index: 20;
+  font-family: "Raleway", serif;
+}
+
+.main_aboutus_baner_title_container h2 {
+  font-size: 6.5rem;
+  color: #7c6a46;
+  font-weight: 700;
+  font-family: "Dancing Script", serif;
+}
+
+.main_aboutus_baner_title_container p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 350px;
+}
+
+/* Responsive style */
+
+@media screen and (max-width: 1536px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 1280px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 640px) {
+  .container {
+    max-width: 475px;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 475px) {
+  .container {
+    width: 100%;
+  }
+}

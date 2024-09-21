@@ -87,7 +87,7 @@ const NavBar = () => {
                       to="/"
                       className={({ isActive }) =>
                         isActive
-                          ? "text-[#7C6A46] underline"
+                          ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
                           : "text-[#151515] "
                       }
                     >
@@ -120,7 +120,14 @@ const NavBar = () => {
                     onClick={() => setIsOpen(!isOpen)}
                     className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <NavLink>Contact Us</NavLink>
+                    <NavLink
+                      to="/aboutus"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
+                          : "text-[#151515] "
+                      }
+                    >Contact Us</NavLink>
                   </p>
                 </div>
 
