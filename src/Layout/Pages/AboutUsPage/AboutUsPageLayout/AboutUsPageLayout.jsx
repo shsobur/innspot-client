@@ -1,3 +1,4 @@
+import AboutInfo from "../AboutInfo/AboutInfo";
 import AboutUsBaner from "../AboutUsBaner/AboutUsBaner";
 
 const AboutUsPageLayout = () => {
@@ -5,6 +6,7 @@ const AboutUsPageLayout = () => {
     <>
       <div>
         <AboutUsBaner></AboutUsBaner>
+        <AboutInfo></AboutInfo>
       </div>
     </>
   );

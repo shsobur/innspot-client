@@ -1,0 +1,55 @@
+.main_aboutInfo_outer_container {
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+  padding: 0 30px;
+}
+
+.main_aboutInfo_inner_container {
+  border: 2px solid tomato;
+}
+
+/* About Info main container style */
+
+.main_aboutInfo_contect_outer_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.aboutInfo_left_container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+}
+
+.aboutInfo_image_container img {
+  height: 500px;
+  width: 440px;
+  box-shadow: 20px -20px #7c6a46;
+}
+
+.aboutInfo_image_container h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: "Raleway", serif;
+}
+
+.aboutInfo_right_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  border: 2px solid rgb(218, 88, 22);
+}
+
+/* About Info content style__ */
+
+.aboutInfo_right_container {
+  padding: 20px;
+  font-size: 1.1rem;
+}
