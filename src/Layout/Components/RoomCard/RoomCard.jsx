@@ -33,7 +33,7 @@ const RoomCard = ({ room }) => {
               </div>
 
               <div className="room_card_top_title_inner_container">
-                <h3>Par Night: ${pricePerNight}</h3>
+                <h3>Par night : ${pricePerNight}</h3>
                 <p><span>{status}</span></p>
               </div>
 

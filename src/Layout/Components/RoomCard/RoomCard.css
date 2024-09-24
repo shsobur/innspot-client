@@ -11,7 +11,7 @@
 }
 
 .room_card_image_container {
-  height: 300px;
+  height: 250px;
   width: 100%;
 }
 
@@ -28,17 +28,19 @@
 }
 
 .room_card_top_title_outer_container {
-  font-family: "Raleway", serif;
-  padding: 10px 0;
-  text-align: left;
   color: #7c6a46;
+  text-align: left;
+  padding: 0 10px 10px 10px;
+  font-family: "Raleway", serif;
   border-bottom: 2px solid #7c6a46;
+  /* border: 2px solid red; */
 }
 
 .room_card_top_title_inner_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 20px;
 }
 
 .room_card_top_title_inner_container h2 {
@@ -51,14 +53,15 @@
   font-weight: 600;
 }
 
+.room_card_top_title_outer_container h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .room_card_top_title_inner_container span {
   color: #11c211;
 }
 
-.room_card_top_title_outer_container h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
 
 /* Card bottom sontent style__ */
 
@@ -95,4 +98,181 @@
 .room_card_bottom_title_outer_container button:hover {
   transition: 0.2s ease-in-out;
   background-color: #615336;
+}
+
+/* Responsive style_ */
+
+@media screen and (max-width: 1280px) {
+  .room_card_image_container {
+    height: 220px;
+  }
+
+  .room_card_top_title_inner_container h2 {
+    font-size: 1.3rem;
+  }
+
+  .room_card_top_title_inner_container p {
+    font-size: 1rem;
+  }
+
+  .room_card_top_title_outer_container h3 {
+    font-size: 1rem;
+  }
+
+  .room_card_bottom_title_outer_container {
+    gap: 10px;
+  }
+
+  .card_bottom_icon_contaienr {
+    gap: 10px;
+  }
+
+  .card_bottom_icon_contaienr h4 {
+    font-size: 1.2rem;
+  }
+
+  .room_card_bottom_title_outer_container button {
+    padding: 6px 10px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .room_card_top_title_outer_container {
+    padding-bottom: 10px;
+  }
+
+  .main_card_title_container {
+    padding: 0 10px;
+  }
+
+  .room_card_image_container {
+    height: 180px;
+  }
+
+  .room_card_top_title_inner_container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .room_card_top_title_inner_container h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .card_bottom_icon_contaienr h4 {
+    font-size: 1.1rem;
+  }
+
+  .card_bottom_icon_contaienr {
+    display: flex;
+    gap: 30px;
+  }
+
+  
+  .room_card_bottom_title_outer_container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .room_card_bottom_title_outer_container button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .room_card_top_title_outer_container {
+    padding-bottom: 10px;
+  }
+
+  .room_card_top_title_inner_container {
+    flex-direction: row;
+  }
+
+  .room_card_top_title_inner_container h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .room_card_image_container {
+    height: 150px;
+    width: auto;
+  }
+
+  .room_card_top_title_outer_container {
+    padding: 0;
+    padding-bottom: 10px;
+  }
+
+  .room_card_top_title_inner_container {
+    padding: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .room_card_top_title_inner_container h2 {
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+  }
+
+  .room_card_top_title_inner_container p {
+    font-size: 14px;
+  }
+
+  .room_card_top_title_outer_container h3 {
+    font-size: 14px;
+  }
+
+  .room_card_top_title_inner_container span {
+    font-size: 14px;
+  }
+
+  .card_bottom_icon_contaienr {
+    gap: 15px;
+  }
+
+  .card_bottom_icon_contaienr h4 {
+    font-size: 1rem;
+    padding: 4px;
+  }
+
+  .room_card_bottom_title_outer_container button {
+    padding: 5px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .room_card_image_container {
+    height: 100px;
+    width: auto;
+  }
+
+  .room_card_top_title_inner_container h2 {
+    font-weight: 600;
+    padding-top: 10px;
+  }
+
+  .room_card_top_title_inner_container p {
+    font-weight: 500;
+  }
+
+  .room_card_top_title_inner_container h3 {
+    font-weight: 500;
+  }
+
+  card_bottom_icon_contaienr {
+    gap: 0px;
+  }
+
+  .card_bottom_icon_contaienr h4 {
+    font-size: 12px;
+    padding: 3px;
+  }
+
+  .room_card_bottom_title_outer_container button {
+    padding: 3px;
+    font-size: 14px;
+  }
 }
