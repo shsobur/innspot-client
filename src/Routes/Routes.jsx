@@ -4,6 +4,7 @@ import HomePageLayout from "../Layout/Pages/HomePage/HomePageLayout/HomePageLayo
 import SignIn from "../Layout/Pages/Authentication/SignIn/SignIn";
 import SignUp from "../Layout/Pages/Authentication/SignUp/SignUp";
 import AboutUsPageLayout from "../Layout/Pages/AboutUsPage/AboutUsPageLayout/AboutUsPageLayout";
+import RoomPageLayout from "../Layout/Pages/RoomPage/RoomPageLayout/RoomPageLayout";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePageLayout></HomePageLayout>,
+      },
+      {
+        path: "/room",
+        element: <RoomPageLayout></RoomPageLayout>
       },
       {
         path: "/aboutus",

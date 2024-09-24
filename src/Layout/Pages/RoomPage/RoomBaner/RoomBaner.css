@@ -1,10 +1,10 @@
-.aboutus_baner_outer_container {
+.room_baner_outer_container {
   height: 85vh;
   width: 100%;
   padding: 10px 30px;
 }
 
-.aboutus_baner_inner_container {
+.room_baner_inner_container {
   height: 100%;
   width: 100%;
   position: relative;
@@ -16,42 +16,42 @@
   background-image: url("https://i.ibb.co.com/6m8m6LG/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.png");
 }
 
-/* BG overlay */
 
-.aboutus_bg_overlay {
+/* BG overlay__ */
+
+.room_baner_bg_overlay {
   height: 100%;
   width: 100%;
-  top: 0px;
-  position: absolute;
-  border-radius: 16px; 
+  border-radius: 16px;
+  border-bottom:  4px solid #7c6a46;
   background-color: #000000b5;
 }
 
-/* About Us baner title content style__ */
 
-.main_aboutus_baner_title_container {
+/* Room baner title content style */
+
+.room_baner_title_container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 100%;
   width: 100%;
-  color: #ffffff;
-  text-align: center;
+  top: 0px;
+  z-index: 21;
   position: absolute;
-  z-index: 20;
-  border-radius: 16px;
-  border-bottom: 4px solid #7c6a46;
-  font-family: "Raleway", serif;
+  text-align: center;
+  color: #ffffff;
 }
 
-.main_aboutus_baner_title_container h2 {
+.room_baner_title_container h2 {
   font-size: 6.5rem;
   color: #7c6a46;
   font-weight: 700;
   font-family: "Dancing Script", serif;
 }
 
-.main_aboutus_baner_title_container p {
+.room_baner_title_container p {
   font-size: 1.1rem;
   font-weight: 500;
   padding: 10px 350px;
@@ -60,56 +60,56 @@
 /* Responsive style */
 
 @media screen and (max-width: 1536px) {
-  .main_aboutus_baner_title_container h2 {
+  .room_baner_title_container h2 {
     font-size: 6.2rem;
   }
-  
-  .main_aboutus_baner_title_container p {
+
+  .room_baner_title_container p {
     padding: 10px 290px;
   }
 }
 
 @media screen and (max-width: 1280px) {
-  .main_aboutus_baner_title_container h2 {
+  .room_baner_title_container h2 {
     font-size: 5.5rem;
   }
-  
-  .main_aboutus_baner_title_container p {
+
+  .room_baner_title_container p {
     padding: 10px 160px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .main_aboutus_baner_title_container h2 {
+  .room_baner_title_container h2 {
     font-size: 5rem;
   }
-  
-  .main_aboutus_baner_title_container p {
+
+  .room_baner_title_container p {
     padding: 10px 100px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .main_aboutus_baner_title_container h2 {
+  .room_baner_title_container h2 {
     font-size: 4.8rem;
   }
-  
-  .main_aboutus_baner_title_container p {
+
+  .room_baner_title_container p {
     padding: 10px 60px;
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .aboutus_baner_outer_container {
+  .room_baner_outer_container {
     padding: 10px 20px;
   }
 
-  .main_aboutus_baner_title_container h2 {
+  .room_baner_title_container h2 {
     font-size: 4rem;
   }
-  
-  .main_aboutus_baner_title_container p {
+
+  .room_baner_title_container p {
     padding: 10px 30px;
     font-size: 14px;
     font-weight: 400;
@@ -117,11 +117,11 @@
 }
 
 @media screen and (max-width: 475px) {
-  .main_aboutus_baner_title_container h2 {
+  .room_baner_title_container h2 {
     font-size: 3.3rem;
   }
-  
-  .main_aboutus_baner_title_container p {
+
+  .room_baner_title_container p {
     padding: 10px 10px;
     font-size: 12px;
     font-weight: 400;

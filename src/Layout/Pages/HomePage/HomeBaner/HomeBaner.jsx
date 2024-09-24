@@ -66,7 +66,7 @@ const HomeBaner = () => {
 
               {/* __Baner left side content__ */}
               <div
-                data-aos="fade-right"
+                data-aos="zoom-in"
                 data-aos-easing="linear"
                 data-aos-duration="1000"
                 className="baner_right_contect_container"

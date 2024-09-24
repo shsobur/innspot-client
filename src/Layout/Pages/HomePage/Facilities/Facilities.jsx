@@ -25,7 +25,7 @@ const Facilities = () => {
               <div className="facilities_main_section">
 
                 <div
-                  data-aos="fade-right"
+                  data-aos="zoom-in"
                   data-aos-easing="linear"
                   data-aos-duration="1000"
                   id="section_item_container_1"
@@ -77,7 +77,7 @@ const Facilities = () => {
                 </div>
 
                 <div
-                  data-aos="fade-right"
+                  data-aos="zoom-in"
                   data-aos-easing="linear"
                   data-aos-duration="1000"
                   id="section_item_container_2"
@@ -143,7 +143,7 @@ const Facilities = () => {
                 </div>
 
                 <div
-                  data-aos="fade-right"
+                  data-aos="zoom-in"
                   data-aos-easing="linear"
                   data-aos-duration="1000"
                   id="section_item_container_3"

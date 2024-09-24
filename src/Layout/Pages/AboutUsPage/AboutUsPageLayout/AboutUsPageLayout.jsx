@@ -6,7 +6,7 @@ const AboutUsPageLayout = () => {
     <>
       <div>
         <AboutUsBaner></AboutUsBaner>
-        <AboutInfo></AboutInfo>
+        <AboutInfo></AboutInfo> 
       </div>
     </>
   );
