@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./FeaturedRooms.css";
 
 const FeaturedRooms = () => {
@@ -58,7 +59,7 @@ const FeaturedRooms = () => {
             </div>
 
             <div className="featured_btn_container">
-              <button>Book Now</button>
+              <button><Link to="/room">Book Now</Link></button>
             </div>
 
           </div>

@@ -1,4 +1,5 @@
 import RoomBaner from "../RoomBaner/RoomBaner";
+import RoomCards from "../RoomCards/RoomCards";
 
 
 const RoomPageLayout = () => {
@@ -6,6 +7,7 @@ const RoomPageLayout = () => {
     <>
       <div>
         <RoomBaner></RoomBaner>
+        <RoomCards></RoomCards>
       </div>
     </>
   );

@@ -61,7 +61,7 @@
 
 @media screen and (max-width: 1536px) {
   .room_baner_title_container h2 {
-    font-size: 6.2rem;
+    font-size: 6rem;
   }
 
   .room_baner_title_container p {
@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 1280px) {
   .room_baner_title_container h2 {
-    font-size: 5.5rem;
+    font-size: 5.3rem;
   }
 
   .room_baner_title_container p {
@@ -81,7 +81,7 @@
 
 @media screen and (max-width: 1024px) {
   .room_baner_title_container h2 {
-    font-size: 5rem;
+    font-size: 4.8rem;
   }
 
   .room_baner_title_container p {
@@ -91,7 +91,7 @@
 
 @media screen and (max-width: 768px) {
   .room_baner_title_container h2 {
-    font-size: 4.8rem;
+    font-size: 4.6rem;
   }
 
   .room_baner_title_container p {
@@ -106,7 +106,7 @@
   }
 
   .room_baner_title_container h2 {
-    font-size: 4rem;
+    font-size: 3.8rem;
   }
 
   .room_baner_title_container p {
@@ -118,7 +118,7 @@
 
 @media screen and (max-width: 475px) {
   .room_baner_title_container h2 {
-    font-size: 3.3rem;
+    font-size: 3rem;
   }
 
   .room_baner_title_container p {
