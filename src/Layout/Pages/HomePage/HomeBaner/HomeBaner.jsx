@@ -11,6 +11,7 @@ import banerImg5 from "../../../../assets/banerimg/baner-5.png";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const HomeBaner = () => {
   return (
@@ -61,7 +62,7 @@ const HomeBaner = () => {
                 <h1>Paradise View</h1>
                 <h2>Hotel for every moment rich in emotion</h2>
                 <p>Every moment feels like the first time in paradise view</p>
-                <button>Book Now</button>
+                <button><Link to="/room">Book Now</Link></button>
               </div>
 
               {/* __Baner left side content__ */}
