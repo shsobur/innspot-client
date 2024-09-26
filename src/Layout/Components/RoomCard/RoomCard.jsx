@@ -1,5 +1,6 @@
 import "./RoomCard.css";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 import { GoPlus } from "react-icons/go";
 import { CiWifiOn } from "react-icons/ci";
 import { IoTvOutline } from "react-icons/io5";
@@ -7,6 +8,7 @@ import { LuShowerHead } from "react-icons/lu";
 
 const RoomCard = ({ room }) => {
   const {
+    _id,
     name,
     pricePerNight,
     status,
@@ -16,7 +18,7 @@ const RoomCard = ({ room }) => {
 
   return (
     <>
-      <div>
+      <Link to={`/room/${_id}`}>
 
         <div className="mian_room_card_container">
 
@@ -46,13 +48,13 @@ const RoomCard = ({ room }) => {
                 <h4><LuShowerHead /></h4>
                 <h4><GoPlus /></h4>
               </div>
-              <button>Book now</button>
+              <button><Link to={`/room/${_id}`}>Book now</Link></button>
             </div>
           </div>
 
         </div>
 
-      </div>
+      </Link>
     </>
   );
 };
