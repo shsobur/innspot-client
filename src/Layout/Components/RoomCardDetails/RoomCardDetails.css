@@ -1,11 +1,7 @@
 .main_card_details_outer_container {
   height: 100%;
   width: 100%;
-  padding: 10px 20px;
-}
-
-.main_card_details_inner_container {
-  /* border: 2px solid purple; */
+  padding: 0 20px;
 }
 
 /* Details top header content style__ */
@@ -66,45 +62,239 @@
   font-family: Arial, sans-serif;
 }
 
+/* Details top header content style__end */
 
 
 
+/* Details image and info section style__ */
+
+.details_image_and_info_section_container {
+  gap: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Main left image container__ */
+
+.details_left_side_image_container {
+  height: auto;
+  width: 40%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #7c6a46;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  /* border: 2px solid #7c6a46; */
+}
 
 
+/* Main Right info container__ */
+
+.details_right_side_info_container {
+  height: auto;
+  width: 60%;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  /* border: 2px solid #7c6a46; */
+}
 
 
+/* Left side image style__ */
+
+.details_swiper {
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  padding-bottom: 40px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  border: 2px solid #7c6a46;
+}
+
+.details_swiper img {
+  height: 100%;
+  width: 100%;
+}
+
+.details_left_side_image_container img {
+  height: 100%; 
+  width: 100%;
+  border-radius: 16px;
+}
+
+.offer_container {
+  height: auto;
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px;
+  border: 2px solid #e5e5e5;
+}
+
+.offer_container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-bottom: 20px;
+  color: #152c5b;
+  text-align: center;
+}
+
+.offer_inner_container {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #37c5a8;
+}
+
+/* Left side image style__end */
 
 
+/* Right side info styel__ */
+
+.details_right_side_info_container {
+  gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 
 
+/* Right Inner left side content style__ */
+
+.details_right_side_inner_left_container {
+  height: auto;
+  width: 40%;
+}
+
+.details_inner_left_outer_container {
+  border-radius: 8px;
+  border: 2px solid #e5e5e5;
+}
+
+.details_inner_left_container {
+  padding: 10px;
+  color: #152c5b;
+}
+
+.details_inner_left_container h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 20px;
+  font-family: "Raleway", serif;
+}
+
+.details_inner_left_container span {
+  font-weight: 600;
+  color: #7c6a46;
+}
+
+.details_inner_left_container p {
+  color: #2f2f2f;
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.details_facilities_container {
+  padding: 10px;
+}
+
+.details_facilities_container ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #152c5b;
+  font-weight: 700;
+  padding-bottom: 10px;
+  font-family: "Raleway", serif;
+}
+
+.details_facilities_container p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #151515;
+}
+
+.booking_container {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 2px solid #e5e5e5;
+}
+
+.booking_container h2 {
+  font-size: 1.2rem;
+  color: #152c5b;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.booking_container h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #37c5a8;
+}
+
+.booking_container span {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #b0b0b0;
+}
+
+.booking_container button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 0;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: #7c6a46;
+}
+
+.booking_container button:hover {
+  background-color: #6e5d3c;
+}
+
+/* Inner left side content style__ end*/
 
 
+/* Right Inner right side content style__ */
 
+.details_right_side_inner_right_container { 
+  height: auto;
+  width: 60%;
+}
 
+.about_room_container {
+  height: auto;
+  width: 100%;
+}
 
+.about_room_container h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #152c5b;
+  padding-bottom: 20px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.about_room_container article {
+  font-size: 1.1rem;
+  line-height: 32px;
+  color: #b0b0b0;
+  font-family: "Raleway", serif;
+}
 
 
 /* Responsive style__ */
@@ -122,7 +312,6 @@
     font-size: 2.3rem;
   }
 }
-
 
 @media screen and (max-width: 1280px) {
   .details_top_logo_and_title_container img {
@@ -144,8 +333,64 @@
   .details_top_reating_container h3 {
     width: 130px;
   }
-}
 
+  .details_left_side_image_container {
+    padding: 0px;
+  }
+
+  .details_right_side_info_container {
+    padding: 0px;
+  }
+
+  .offer_container {
+    padding: 10px;
+  }
+
+  .offer_container h2 {
+    font-size: 1.5rem;
+  }
+
+  .details_right_side_info_container {
+    gap: 10px;
+  }
+
+  .details_right_side_inner_left_container {
+    width: 50%;
+  }
+
+  .details_inner_left_container h2 {
+    font-size: 1.3rem;
+  }
+
+  .details_inner_left_container span {
+    font-size: 1.1rem;
+  }
+
+  .details_inner_left_container p {
+    font-size: 1rem;
+  }
+
+  .details_facilities_container ul {
+    font-size: 1.3rem;
+  }
+
+  .booking_container {
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .booking_container span {
+    font-size: 2rem;
+  }
+
+  .booking_container button {
+    padding: 6px 0;
+  }
+
+  .about_room_container article {
+    line-height: 28px;
+  }
+}
 
 @media screen and (max-width: 1024px) {
   .details_top_location_outer_container h2 {
@@ -163,8 +408,63 @@
   .details_top_reating_container h3 {
     width: 100px;
   }
-}
 
+  .details_left_side_image_container {
+    width: 50%;
+  }
+
+  .offer_container h2  {
+    padding-bottom: 10px;
+  }
+
+  .offer_inner_container {
+    font-size: 1rem;
+  }
+
+  .details_right_side_info_container {
+    flex-direction: column;
+  }
+
+  .details_right_side_inner_left_container {
+    width: 100%;
+  }
+
+  .details_inner_left_outer_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .details_inner_left_container h2 {
+    text-align: left;
+    padding-bottom: 5px;
+  }
+
+  .details_facilities_container ul {
+    justify-content: flex-start;
+  }
+
+  .booking_container h2 {
+    padding-bottom: 0px;
+  }
+
+  .booking_container span {
+    font-size: 1.8rem;
+  }
+
+  .details_right_side_inner_right_container {
+    width: 100%;
+  }
+
+  .about_room_container h2 {
+    padding-bottom: 10px;
+  }
+
+  .about_room_container article {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .details_top_logo_and_title_container img {
@@ -190,8 +490,27 @@
   .details_top_reating_container h3 {
     width: 80px;
   }
-}
 
+  .details_image_and_info_section_container {
+    flex-direction: row-reverse;
+  }
+
+  .details_left_side_image_container {
+    width: 45%;
+  }
+
+  .details_inner_left_container span {
+    font-size: 16px;
+  }
+
+  .details_inner_left_container p {
+    font-size: 14px;
+  }
+
+  .details_facilities_container p {
+    font-size: 14px;
+  }
+}
 
 @media screen and (max-width: 640px) {
   .details_top_header_container {
@@ -225,8 +544,19 @@
   .details_top_reating_container h3 {
     width: 50px;
   }
-}
 
+  .details_image_and_info_section_container {
+    flex-direction: column;
+  }
+
+  .details_left_side_image_container {
+    width: 100%;
+  }
+
+  .details_right_side_info_container {
+    width: 100%;
+  }
+}
 
 @media screen and (max-width: 475px) {
   .details_top_logo_and_title_container img {
@@ -252,5 +582,45 @@
 
   .details_top_reating_container h3 {
     width: 35px;
+  }
+
+  .offer_container h2 {
+    font-size: 1.4rem;
+  }
+
+  .offer_inner_container {
+    padding: 8px 0;
+  }
+
+  .details_inner_left_container h2 {
+    font-size: 18px;
+  }
+
+  .details_inner_left_container span {
+    font-size: 16px;
+  }
+
+  .details_inner_left_container p {
+    font-size: 14px;
+  }
+
+  .details_facilities_container ul {
+    font-size: 18px;
+  }
+
+  .details_facilities_container p {
+    font-size: 16px;
+  }
+
+  .booking_container h2 {
+    font-size: 1rem;
+  }
+
+  .booking_container h1 {
+    font-size: 1.6rem;
+  }
+
+  .booking_container span {
+    font-size: 1.6rem;
   }
 }
