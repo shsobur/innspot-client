@@ -1,0 +1,230 @@
+.booking_main_content_container {
+  height: auto;
+  width: 60%;
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid #e5e5e5;
+}
+
+.bookign_title_container h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #7c6a46;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5e5e5;
+  font-family: "Dancing Script", serif;
+}
+
+
+/* Booking input grid style__ */
+
+.main_booking_input_container {
+  width: 100%;
+  margin-top: 50px;
+  display: grid;
+  row-gap: 20px;
+  column-gap: 50px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+#input_box_1 {
+  grid-column-start: 1;
+  grid-column-end: 7;
+}
+
+#input_box_2 {
+  grid-column-start: 7;
+  grid-column-end: -1;
+}
+
+#input_box_3 {
+  grid-column-start: 1;
+  grid-column-end: 7;
+}
+
+#input_box_4 {
+  grid-column-start: 7;
+  grid-column-end: -1;
+}
+
+#input_box_5 {
+  grid-column-start: 1;
+  grid-column-end: 7;
+}
+
+#input_box_6 {
+  grid-column-start: 7;
+  grid-column-end: -1;
+}
+
+#input_box_7 {
+  grid-column-start: 5;
+  grid-column-end: 9;
+}
+
+
+
+/* Booking input container style__ */
+
+.booking_input_container p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0 0 5px 5px;
+  color: #ffffffbd;
+  font-family: "Raleway", sans-serif;
+}
+
+.booking_input_container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  outline: none;
+  border-radius: 8px;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  box-shadow: #32325d40 0px 2px 5px -1px, #0000004d 0px 1px 3px -1px;
+}
+
+.booking_input_container input:focus {
+  box-shadow: none;
+  transition: 0.5s ease-in;
+  border-left: 2px solid #7C6A46;
+  border-bottom: 2px solid #7C6A46;
+}
+
+.booking_sub_input_container input {
+  width: 100%;
+  font-size: 1.1rem;
+  color: #ffffff;
+  padding: 8px;
+  margin-top: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #7C6A46;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .booking_main_content_container {
+    width: 70%;
+  }
+
+  .bookign_title_container h2 {
+    font-size: 2.8rem;
+  }
+
+  .main_booking_input_container {
+    margin-top: 30px;
+    column-gap: 20px;
+  }
+
+  .booking_input_container p {
+    font-size: 1rem;
+  }
+
+  .booking_input_container input {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .booking_sub_input_container input {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .booking_main_content_container {
+    padding: 20px;
+  }
+
+  .bookign_title_container h2 {
+    font-size: 2.6rem;
+  }
+
+  .main_booking_input_container {
+    margin-top: 20px;
+  }
+
+  .booking_sub_input_container input {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .booking_main_content_container {
+    width: 80%;
+  }
+
+  .bookign_title_container h2 {
+    font-size: 2.4rem;
+  }
+
+  .booking_input_container p {
+    font-size: 14px;
+  }
+
+  .booking_input_container input {
+    padding: 6px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .booking_main_content_container {
+    width: 85%;
+  }
+
+  .bookign_title_container h2 {
+    font-size: 2rem;
+  }
+
+  #input_box_1 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #input_box_2 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #input_box_3 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #input_box_4 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #input_box_5 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #input_box_6 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  
+  #input_box_7 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .booking_main_content_container {
+    width: 90%;
+  }
+
+  .booking_main_content_container {
+    padding: 10px;
+  }
+
+  .bookign_title_container h2 {
+    font-size: 1.8rem;
+  }
+}

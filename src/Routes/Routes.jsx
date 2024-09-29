@@ -18,16 +18,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/room",
-        element: <RoomPageLayout></RoomPageLayout>
+        element: <RoomPageLayout></RoomPageLayout>,
       },
       {
         path: "/room/:id",
         element: <RoomCardDetails></RoomCardDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/rooms/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/rooms/${params.id}`),
       },
       {
         path: "/aboutus",
-        element: <AboutUsPageLayout></AboutUsPageLayout>
+        element: <AboutUsPageLayout></AboutUsPageLayout>,
       },
       {
         path: "/signin",
