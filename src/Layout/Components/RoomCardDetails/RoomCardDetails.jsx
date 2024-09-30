@@ -158,7 +158,7 @@ const RoomCardDetails = () => {
                         </form>
 
                         <div className="modal_contain_main_outer_container">
-                          <BookingPage></BookingPage>
+                          <BookingPage roomInfo={roomInfo}></BookingPage>
                         </div>
                       </div>
                     </dialog>
