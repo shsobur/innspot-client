@@ -141,7 +141,7 @@ const RoomCardDetails = () => {
                         ${roomInfo.pricePerNight} <span>par Night</span>
                       </h1>
                       <div>
-                        <Link to="/booking">
+                        <Link state={{roomInfo}} to="/booking">
                           <button>
                             Book Now!
                           </button>

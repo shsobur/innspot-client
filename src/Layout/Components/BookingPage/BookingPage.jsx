@@ -1,6 +1,111 @@
+import { useForm } from "react-hook-form";
 import "./BookingPage.css";
+import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const BookingPage = () => {
+  const location = useLocation();
+  const roomInfo = location?.state.roomInfo;
+  const {user} = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [totalDays, setTotalDays] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const priceParNight = roomInfo.pricePerNight;
+
+  const handleTotalDays = () => {
+    const startDate = new Date(checkIn);
+    const endDate = new Date(checkOut);
+
+    if(endDate <= startDate) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Wrong check out date, use valid"
+      });
+    }
+
+    const totalTime = endDate - startDate;
+    const totalDays = totalTime / (1000 * 60 * 60* 24);
+
+    return totalDays;
+  };
+
+  useEffect(() => {
+    console.log(checkIn, checkOut);
+
+    if(checkIn && checkOut) {
+      const days = handleTotalDays();
+
+      if(days > 0) {
+        setTotalDays(days);
+        setTotalPrice(days * priceParNight);
+      }
+      else {
+        setTotalDays(0);
+        setTotalPrice(0);
+      }
+    }
+    return;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkIn, checkOut]);
+
+  console.log(checkIn, checkOut);
+
+  const onSubmit = (data) => {
+    const userName = data.name;
+    const userEmail = user?.email;
+    const contactUserEmail = data.email;
+    const checkInDate = checkIn;
+    const checkOutDate = checkOut;
+    const roomName = roomInfo.name;
+    const roomImage = roomInfo.images[0];
+    const roomNumber = roomInfo.roomNumber;
+    const roomCategory = roomInfo.category;
+
+    const booking = {
+      userName,
+      userEmail,
+      contactUserEmail,
+      checkInDate,
+      checkOutDate,
+      totalDays,
+      totalPrice,
+      roomCategory,
+      roomName,
+      roomNumber,
+      roomImage,
+    }
+
+    if(totalPrice === 0) {
+      console.log("Fill the form properly");
+      return;
+    }
+
+    console.log("You can go")
+    console.log(booking);
+
+  }
+
   return (
     <>
       <div className="main_container">
@@ -8,6 +113,10 @@ const BookingPage = () => {
           <div className="main_booking_form_outer_container">
             <div className="booking_title_container">
               <h2>Make Your Booking</h2>
+              <div className="total_count_container">
+                <p><span>Total Day:</span> {totalDays}</p>
+                <p><span>Total Price:</span> $ {totalPrice}</p>
+              </div>
             </div>
 
             <div className="from_container">
@@ -17,7 +126,7 @@ const BookingPage = () => {
                   Booking Form :
                 </h2>
 
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
                       <label
@@ -28,8 +137,12 @@ const BookingPage = () => {
                       <input
                         type="text"
                         name="name"
+                        {...register("name", { required: true })}
                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
+                      <div>
+                        {errors.name && <span className="text-sm text-red-500">Fill this field!</span>}
+                      </div>
                     </div>
 
                     <div>
@@ -41,8 +154,12 @@ const BookingPage = () => {
                       <input
                         type="email"
                         name="email"
+                        {...register("email", { required: true })}
                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
+                      <div>
+                        {errors.email && <span className="text-sm text-red-500">Fill this field!</span>}
+                      </div>
                     </div>
 
                     <div>
@@ -54,6 +171,8 @@ const BookingPage = () => {
                       <input
                         type="date"
                         name="checkin"
+                        value={checkIn}
+                        onChange={(event) => setCheckIn(event.target.value)}
                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -67,13 +186,15 @@ const BookingPage = () => {
                       <input
                         type="date"
                         name="checkout"
+                        value={checkOut}
+                        onChange={(event) => setCheckOut(event.target.value)}
                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
                   </div>
 
                   <div className="flex justify-end mt-6">
-                    <input className="px-8 cursor-pointer py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#7c6a46] rounded-md hover:bg-[#615236] focus:outline-none focus:bg-gray-600" type="submit" value="Conform Booking" >
+                    <input className="px-8 cursor-pointer py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#7c6a46] rounded-md hover:bg-[#615236] focus:outline-none focus:bg-gray-600" type="submit" value="Conform" >
                     </input>
                   </div>
 
