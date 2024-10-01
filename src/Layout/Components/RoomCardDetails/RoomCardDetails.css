@@ -298,15 +298,11 @@
 
 
 /* Modal main container style__ */
-
+/* 
 .modal_contain_main_outer_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #151515;
-  padding: 50px 0;
-  border-radius: 16px;
-}
+  border: 2px solid black;
+} 
+*/
 
 
 /* Responsive style__ */

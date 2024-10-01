@@ -1,6 +1,6 @@
 import "./RoomCardDetails.css";
 import { CgPin } from "react-icons/cg";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 // React rating__
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
@@ -18,11 +18,10 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { RxCross2 } from "react-icons/rx";
-import BookingPage from "../BookingPage/BookingPage";
 
 const RoomCardDetails = () => {
   const roomInfo = useLoaderData();
+
   console.log(roomInfo);
 
   return (
@@ -30,7 +29,10 @@ const RoomCardDetails = () => {
       <div className="main_container">
         <div className="main_card_details_outer_container">
           <div className="main_card_details_inner_container">
+
             <div className="main_details_container">
+
+              {/* Header of the page__ST */}
               <div className="details_top_header_container">
                 <div className="details_top_logo_and_title_container">
                   <img src={logoImg} alt="logo" />
@@ -38,14 +40,11 @@ const RoomCardDetails = () => {
                   <div className="details_top_location_outer_container">
                     <h2>Grand Canyon, Arzions, USA</h2>
                     <div className="details_top_location_inner_container">
-                      <h3>
-                        <CgPin />
-                      </h3>
-                      <p>
-                        Cocnmino country, Grand canyon cillage, Arizona, USA
-                      </p>
+                      <h3><CgPin /></h3>
+                      <p>Cocnmino country, Grand canyon cillage, Arizona, USA</p>
                     </div>
                   </div>
+
                 </div>
 
                 <div className="details_top_reating_container">
@@ -59,8 +58,11 @@ const RoomCardDetails = () => {
                   <h2>{roomInfo.rating}</h2>
                 </div>
               </div>
+              {/* Header of the page__END */}
 
               <div className="details_image_and_info_section_container">
+
+                {/* Left side image and offer section of the page__ST */}
                 <div className="details_left_side_image_container">
                   <Swiper
                     pagination={{
@@ -79,9 +81,7 @@ const RoomCardDetails = () => {
                   <div className="offer_container">
                     <h2>Offer For Today</h2>
                     <div className="offer_inner_container">
-                      <h3>
-                        <MdLocalOffer />
-                      </h3>
+                      <h3><MdLocalOffer /></h3>
                       <p>
                         {roomInfo.offers ? (
                           <p> {roomInfo.offers} </p>
@@ -92,10 +92,14 @@ const RoomCardDetails = () => {
                     </div>
                   </div>
                 </div>
+                {/* Left side image and offer section of the page__END */}
 
+                {/* Right side room info section of the page__ST */}
                 <div className="details_right_side_info_container">
                   <div className="details_right_side_inner_left_container">
+
                     <div className="details_inner_left_outer_container">
+
                       <div className="details_inner_left_container">
                         <h2>{roomInfo.name}</h2>
                         <p>
@@ -114,9 +118,7 @@ const RoomCardDetails = () => {
 
                       <div className="details_facilities_container">
                         <ul>
-                          <h3>
-                            <TiTick />
-                          </h3>
+                          <h3><TiTick /></h3>
                           <h2>Amenities</h2>
                         </ul>
                         <div>
@@ -130,6 +132,7 @@ const RoomCardDetails = () => {
                           <p>Private terrace</p> */}
                         </div>
                       </div>
+
                     </div>
 
                     <div className="booking_container">
@@ -137,31 +140,7 @@ const RoomCardDetails = () => {
                       <h1>
                         ${roomInfo.pricePerNight} <span>par Night</span>
                       </h1>
-                      <button
-                        onClick={() =>
-                          document.getElementById("booking_modal").showModal()
-                        }
-                      >
-                        <Link>Book Now!</Link>
-                      </button>
                     </div>
-
-                    <dialog
-                      id="booking_modal"
-                      className="modal w-full rounded-2xl"
-                    >
-                      <div className="modal-box">
-                        <form method="dialog">
-                          <button className="text-white lg:text-3xl md:2xl sm:xl absolute right-6 top-4">
-                            <RxCross2 />
-                          </button>
-                        </form>
-
-                        <div className="modal_contain_main_outer_container">
-                          <BookingPage roomInfo={roomInfo}></BookingPage>
-                        </div>
-                      </div>
-                    </dialog>
 
                   </div>
 
@@ -172,8 +151,12 @@ const RoomCardDetails = () => {
                     </div>
                   </div>
                 </div>
+                {/* Right side room info section of the page__END */}
+
               </div>
+
             </div>
+
           </div>
         </div>
       </div>
