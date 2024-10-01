@@ -1,6 +1,6 @@
 import "./RoomCardDetails.css";
 import { CgPin } from "react-icons/cg";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 // React rating__
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
@@ -140,6 +140,13 @@ const RoomCardDetails = () => {
                       <h1>
                         ${roomInfo.pricePerNight} <span>par Night</span>
                       </h1>
+                      <div>
+                        <Link to="/booking">
+                          <button>
+                            Book Now!
+                          </button>
+                        </Link>
+                      </div>
                     </div>
 
                   </div>

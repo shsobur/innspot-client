@@ -6,6 +6,7 @@ import SignUp from "../Layout/Pages/Authentication/SignUp/SignUp";
 import AboutUsPageLayout from "../Layout/Pages/AboutUsPage/AboutUsPageLayout/AboutUsPageLayout";
 import RoomPageLayout from "../Layout/Pages/RoomPage/RoomPageLayout/RoomPageLayout";
 import RoomCardDetails from "../Layout/Components/RoomCardDetails/RoomCardDetails";
+import BookingPage from "@/Layout/Components/BookingPage/BookingPage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         element: <RoomCardDetails></RoomCardDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/rooms/${params.id}`),
+      },
+      {
+        path: "/booking",
+        element: <BookingPage></BookingPage>,
       },
       {
         path: "/aboutus",
