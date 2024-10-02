@@ -7,6 +7,7 @@ import AboutUsPageLayout from "../Layout/Pages/AboutUsPage/AboutUsPageLayout/Abo
 import RoomPageLayout from "../Layout/Pages/RoomPage/RoomPageLayout/RoomPageLayout";
 import RoomCardDetails from "../Layout/Components/RoomCardDetails/RoomCardDetails";
 import BookingPage from "@/Layout/Components/BookingPage/BookingPage";
+import MyBooking from "@/Layout/Pages/MyBooking/MyBooking";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/booking",
         element: <BookingPage></BookingPage>,
+      },
+      {
+        path: "/mybooking",
+        element: <MyBooking></MyBooking>,
       },
       {
         path: "/aboutus",

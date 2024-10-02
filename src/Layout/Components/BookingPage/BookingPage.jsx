@@ -2,13 +2,16 @@ import { useForm } from "react-hook-form";
 import "./BookingPage.css";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import useAxiosSecure from "@/Hooks/useAxiosSecure/useAxiosSecure";
 
 const BookingPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const roomInfo = location?.state.roomInfo;
   const {user} = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
 
   const {
     register,
@@ -51,7 +54,6 @@ const BookingPage = () => {
   };
 
   useEffect(() => {
-    console.log(checkIn, checkOut);
 
     if(checkIn && checkOut) {
       const days = handleTotalDays();
@@ -97,12 +99,38 @@ const BookingPage = () => {
     }
 
     if(totalPrice === 0) {
-      console.log("Fill the form properly");
+      Swal.fire({
+        title: "Wrong submition",
+        text: "You are not fill the form correctly!. Try again",
+        icon: "warning"
+      });
       return;
     }
 
-    console.log("You can go")
-    console.log(booking);
+    axiosSecure.post("/bookings", booking)
+    .then(res => {
+      console.log(res.data)
+
+      if(res.data.acknowledged) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Room booked successfully"
+        });
+
+        navigate("/mybooking");
+      }
+    })
 
   }
 
@@ -110,7 +138,13 @@ const BookingPage = () => {
     <>
       <div className="main_container">
         <div className="main_booking_outer_container">
-          <div className="main_booking_form_outer_container">
+
+          <div 
+            data-aos="zoom-in"
+            data-aos-easing="linear"
+            data-aos-duration="1000"
+            className="main_booking_form_outer_container">
+
             <div className="booking_title_container">
               <h2>Make Your Booking</h2>
               <div className="total_count_container">
