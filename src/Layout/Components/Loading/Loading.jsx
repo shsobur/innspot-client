@@ -60,7 +60,7 @@ const Loading = () => {
   return (
     loadign && (
       <>
-        <div className="w-full mt-80 mb-20 gap-5 flex justify-center flex-col items-center">
+        <div className="w-full mt-5 mb-5 gap-5 flex justify-center flex-col items-center">
           <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-[#7c6a46]"></div>
           <h1 className="text-3xl text-center font-bold text-[#7c6a46]">
             loading...
