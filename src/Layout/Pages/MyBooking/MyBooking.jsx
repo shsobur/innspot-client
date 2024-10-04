@@ -1,18 +1,22 @@
 import "./MyBooking.css";
+import Swal from "sweetalert2";
 import { IoBagCheck } from "react-icons/io5";
+import { LiaEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegCalendarCheck } from "react-icons/fa";
-import { LiaEditSolid } from "react-icons/lia";
+
 import useAxiosSecure from "@/Hooks/useAxiosSecure/useAxiosSecure";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/Layout/Components/AuthProvider/AuthProvider";
 import Loading from "@/Layout/Components/Loading/Loading";
-import Swal from "sweetalert2";
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 
 const MyBooking = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const url = `http://localhost:5000/bookings/${user?.email}`;
 
@@ -42,7 +46,7 @@ const MyBooking = () => {
               icon: "success",
             });
 
-            const remaining = bookings.filter(booking => booking._id !== id)
+            const remaining = bookings.filter((booking) => booking._id !== id);
             setBookings(remaining);
           }
         });
@@ -196,12 +200,143 @@ const MyBooking = () => {
                                 </h3>
 
                                 <h3 className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                  <button>
+                                  <button onClick={() => setIsOpen(true)}>
                                     <LiaEditSolid />
                                   </button>
                                 </h3>
+
+                                <h3 className="text-gray-500 transition-colors duration-200 dark:hover:text-green-500 dark:text-gray-300 hover:text-green-500 focus:outline-none">
+                                  <button>
+                                    <IoIosInformationCircleOutline />
+                                  </button>
+
+                                  {/* Tool tip_ST */}
+
+                                  {/* <div className="relative inline-block">
+
+                                    <p className="absolute flex items-center justify-center w-48 p-3 text-gray-600 bg-white rounded-lg shadow-lg -left-[13.2rem] -top-4 dark:shadow-none shadow-gray-200 dark:bg-gray-800 dark:text-white">
+                                      <span className="truncate">
+                                        This is a tooltip
+                                      </span>
+
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="absolute w-6 h-6 text-white transform rotate-45 -translate-y-1/2 fill-current -right-3 top-1/2 dark:text-gray-800"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"></path>
+                                      </svg>
+                                    </p>
+                                  </div> */}
+
+                                  {/* Tool tip_END */}
+                                </h3>
                               </div>
                             </td>
+
+                            {/* Update modal__ST */}
+
+                            <div>
+                              <div className="relative flex justify-center">
+                                {isOpen && (
+                                  <>
+                                    {/* Background overlay */}
+                                    <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+
+                                    {/* Modal content */}
+                                    <div
+                                      className="fixed inset-0 z-20 overflow-y-auto"
+                                      aria-labelledby="modal-title"
+                                      role="dialog"
+                                      aria-modal="true"
+                                    >
+                                      <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                                        <span
+                                          className="hidden sm:inline-block sm:h-screen sm:align-middle"
+                                          aria-hidden="true"
+                                        >
+                                          &#8203;
+                                        </span>
+
+                                        <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
+                                          <h3
+                                            className="text-2xl pb-5 font-bold leading-6 text-center text-gray-800 capitalize dark:text-white"
+                                            id="modal-title"
+                                          >
+                                            Update your booking
+                                          </h3>
+                                          <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                                            You can update their bookings, but
+                                            updates are allowed only within 3
+                                            days of the booking. After 3 days,
+                                            changes are not possible.
+                                          </p>
+
+                                          <form className="mt-4">
+
+                                            <div>
+                                              <p className="pl-1 mt-5 font-medium">Full name</p>
+                                              <input
+                                                type="text"
+                                                name="name"
+                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                              />
+                                            </div>
+
+                                            <div>
+                                              <p className="pl-1 mt-4 font-medium">Enter your email</p>
+                                              <input
+                                                type="text"
+                                                name="name"
+                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                              />
+                                            </div>
+
+                                            <div>
+                                              <p className="pl-1 mt-4 font-medium">New check-in date</p>
+                                              <input
+                                                type="date"
+                                                name="checkin"
+                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                              />
+                                            </div>
+
+                                            <div>
+                                              <p className="pl-1 mt-4 font-medium">New check-up date</p>
+                                              <input
+                                                type="date"
+                                                name="checkup"
+                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                              />
+                                            </div>
+
+                                            <div className="mt-4 sm:flex sm:items-center sm:-mx-2">
+                                              <button
+                                                type="button"
+                                                onClick={() => setIsOpen(false)}
+                                                className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
+                                              >
+                                                Cancel
+                                              </button>
+
+                                              <button
+                                                type="button"
+                                                className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                              >
+                                                Update
+                                              </button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Update modal__END */}
                           </tr>
                         ))}
                       </tbody>
@@ -216,20 +351,9 @@ const MyBooking = () => {
                 href="#"
                 className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 rtl:-scale-x-100"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-                  />
-                </svg>
+                <h3>
+                  <GoArrowLeft />
+                </h3>
 
                 <span>previous</span>
               </a>
@@ -241,36 +365,42 @@ const MyBooking = () => {
                 >
                   1
                 </a>
+
                 <a
                   href="#"
                   className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
                 >
                   2
                 </a>
+
                 <a
                   href="#"
                   className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
                 >
                   3
                 </a>
+
                 <a
                   href="#"
                   className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
                 >
                   ...
                 </a>
+
                 <a
                   href="#"
                   className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
                 >
                   12
                 </a>
+
                 <a
                   href="#"
                   className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
                 >
                   13
                 </a>
+
                 <a
                   href="#"
                   className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100"
@@ -285,20 +415,9 @@ const MyBooking = () => {
               >
                 <span>Next</span>
 
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 rtl:-scale-x-100"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
+                <h3>
+                  <GoArrowRight />
+                </h3>
               </a>
             </div>
           </section>
