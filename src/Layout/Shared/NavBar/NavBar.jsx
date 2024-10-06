@@ -11,8 +11,6 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
 
-  const userImage = user?.photoURL;
-
   const handleSignOut = () => {
     // Sweet Alert to log out__
     Swal.fire({
@@ -160,12 +158,12 @@ const NavBar = () => {
                     <div className="overflow-hidden">
                       <div>
                         {user &&
-                          (userImage ? (
+                          (user.photoURL ? (
                             <div>
                               <img
-                                className="h-10 w-10 border-2 border-[#7c6a46] rounded-full"
-                                src={userImage}
-                                alt="user img"
+                                className="h-8 w-8 border-2 border-[#7c6a46] rounded-full"
+                                src={user.photoURL}
+                                alt="img missing"
                               />
                             </div>
                           ) : (

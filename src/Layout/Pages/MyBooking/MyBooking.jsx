@@ -17,6 +17,7 @@ const MyBooking = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [roomBookingInfo, setRoomBookingInfo] = useState(null);
 
   const url = `http://localhost:5000/bookings/${user?.email}`;
 
@@ -26,6 +27,8 @@ const MyBooking = () => {
     });
   }, [axiosSecure, url]);
 
+
+  // Delete oparation__
   const handleDelete = (id) => {
     // Sweet Alart befour delete__
     Swal.fire({
@@ -200,7 +203,11 @@ const MyBooking = () => {
                                 </h3>
 
                                 <h3 className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                  <button onClick={() => setIsOpen(true)}>
+                                  <button onClick={() => {
+                                    setIsOpen(true);
+                                    setRoomBookingInfo(booking)
+                                    console.log(booking);
+                                  }}>
                                     <LiaEditSolid />
                                   </button>
                                 </h3>
@@ -209,40 +216,25 @@ const MyBooking = () => {
                                   <button>
                                     <IoIosInformationCircleOutline />
                                   </button>
-
-                                  {/* Tool tip_ST */}
-
-                                  {/* <div className="relative inline-block">
-
-                                    <p className="absolute flex items-center justify-center w-48 p-3 text-gray-600 bg-white rounded-lg shadow-lg -left-[13.2rem] -top-4 dark:shadow-none shadow-gray-200 dark:bg-gray-800 dark:text-white">
-                                      <span className="truncate">
-                                        This is a tooltip
-                                      </span>
-
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="absolute w-6 h-6 text-white transform rotate-45 -translate-y-1/2 fill-current -right-3 top-1/2 dark:text-gray-800"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"></path>
-                                      </svg>
-                                    </p>
-                                  </div> */}
-
-                                  {/* Tool tip_END */}
                                 </h3>
                               </div>
                             </td>
 
-                            {/* Update modal__ST */}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
 
-                            <div>
+                    {/* Update modal__ST */}
+
+                    <div>
                               <div className="relative flex justify-center">
                                 {isOpen && (
                                   <>
                                     {/* Background overlay */}
-                                    <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+                                    <div 
+                                    
+                                    className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
 
                                     {/* Modal content */}
                                     <div
@@ -259,7 +251,11 @@ const MyBooking = () => {
                                           &#8203;
                                         </span>
 
-                                        <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
+                                        <div
+                                        data-aos="fade-up"
+                                        data-aos-easing="linear"
+                                        data-aos-duration="1000" 
+                                        className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
                                           <h3
                                             className="text-2xl pb-5 font-bold leading-6 text-center text-gray-800 capitalize dark:text-white"
                                             id="modal-title"
@@ -277,20 +273,25 @@ const MyBooking = () => {
 
                                             <div>
                                               <p className="pl-1 mt-5 font-medium">Full name</p>
+
                                               <input
                                                 type="text"
                                                 name="name"
+                                                defaultValue={roomBookingInfo.userName}
                                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                               />
+
                                             </div>
 
                                             <div>
                                               <p className="pl-1 mt-4 font-medium">Enter your email</p>
                                               <input
                                                 type="text"
-                                                name="name"
+                                                name="email"
+                                                defaultValue={roomBookingInfo.contactUserEmail}
                                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                               />
+
                                             </div>
 
                                             <div>
@@ -298,6 +299,8 @@ const MyBooking = () => {
                                               <input
                                                 type="date"
                                                 name="checkin"
+                                                defaultValue={roomBookingInfo.checkInDate}
+                                                // value={(event) => setCheckIn(event.target.value)}
                                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                               />
                                             </div>
@@ -307,6 +310,8 @@ const MyBooking = () => {
                                               <input
                                                 type="date"
                                                 name="checkup"
+                                                defaultValue={roomBookingInfo.checkOutDate}
+                                                // value={(event) => setCheckOut(event.target.value)}
                                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                               />
                                             </div>
@@ -314,19 +319,22 @@ const MyBooking = () => {
                                             <div className="mt-4 sm:flex sm:items-center sm:-mx-2">
                                               <button
                                                 type="button"
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={() => {
+                                                  setIsOpen(false);;
+                                                }}
                                                 className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
                                               >
                                                 Cancel
                                               </button>
 
                                               <button
-                                                type="button"
+                                                type="submit"
                                                 className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                                               >
                                                 Update
                                               </button>
                                             </div>
+
                                           </form>
                                         </div>
                                       </div>
@@ -337,10 +345,7 @@ const MyBooking = () => {
                             </div>
 
                             {/* Update modal__END */}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+
                   </div>
                 </div>
               </div>
