@@ -25,6 +25,8 @@ const BookingPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const priceParNight = roomInfo.pricePerNight;
 
+  // Calculating booking total days__
+
   const handleTotalDays = () => {
     const startDate = new Date(checkIn);
     const endDate = new Date(checkOut);
@@ -92,6 +94,7 @@ const BookingPage = () => {
       checkOutDate,
       totalDays,
       totalPrice,
+      priceParNight,
       roomCategory,
       roomName,
       roomNumber,

@@ -16,8 +16,18 @@ const MyBooking = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+  const [roomBookingInfo, setRoomBookingInfo] = useState([]);
+
   const [isOpen, setIsOpen] = useState(false);
-  const [roomBookingInfo, setRoomBookingInfo] = useState(null);
+  const [errorMessage, setErrorMessage]= useState("");
+
+  const [totalDays, setTotalDays] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [roomPrice, setRoomPrice] = useState(0);
+
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate ,setCheckOutDate] = useState("");
+
 
   const url = `http://localhost:5000/bookings/${user?.email}`;
 
@@ -26,7 +36,6 @@ const MyBooking = () => {
       setBookings(res.data);
     });
   }, [axiosSecure, url]);
-
 
   // Delete oparation__
   const handleDelete = (id) => {
@@ -57,6 +66,88 @@ const MyBooking = () => {
     });
   };
 
+  // Calculating new update total days__
+
+  const handleUpdateTotalDays = () => {
+    const startDay = new Date(checkInDate);
+    const endDay = new Date(checkOutDate);
+
+    if(endDay <= startDay) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Wrong check out date, use valid"
+      });
+    }
+
+    const totalTime = endDay - startDay;
+    const totalDays = totalTime / (1000 * 60 * 60* 24)
+
+    return totalDays;
+  }
+
+  useEffect(() => {
+    const days = handleUpdateTotalDays();
+
+    if(days > 0) {
+      setTotalDays(days);
+      setTotalPrice(days * roomPrice)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkInDate, checkOutDate])
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    if(!checkInDate || !checkOutDate) {
+      console.log("on input value");
+      setErrorMessage("Please fulfill the input");
+      return;
+    }
+
+    setErrorMessage("");
+
+    const form = e.target;
+
+    const userName = form.name.value;
+    const contactUserEmail = form.email.value;
+
+    const updateBookingValue = {
+      userName,
+      contactUserEmail,
+      checkInDate,
+      checkOutDate,
+      totalDays,
+      totalPrice
+    }
+
+    if(totalPrice === 0) {
+      Swal.fire({
+        title: "Wrong submition",
+        text: "You are not fill the form correctly!. Try again",
+        icon: "warning"
+      });
+      return;
+    }
+
+    console.log(updateBookingValue);
+
+    setCheckInDate("");
+    setCheckOutDate("");
+    setRoomPrice(0);
+
+  };
+
   return (
     <>
       <div className="main_container">
@@ -79,6 +170,7 @@ const MyBooking = () => {
               <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                   <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+
                     <table className="table_container min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                       <thead className="bg-[#7c6a46] text-white dark:bg-gray-800">
                         <tr>
@@ -203,11 +295,14 @@ const MyBooking = () => {
                                 </h3>
 
                                 <h3 className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                  <button onClick={() => {
-                                    setIsOpen(true);
-                                    setRoomBookingInfo(booking)
-                                    console.log(booking);
-                                  }}>
+                                  <button
+                                    onClick={() => {
+                                      setIsOpen(true);
+                                      setRoomBookingInfo(booking);
+                                      setRoomPrice(roomBookingInfo.priceParNight);
+                                      console.log(booking);
+                                    }}
+                                  >
                                     <LiaEditSolid />
                                   </button>
                                 </h3>
@@ -219,7 +314,6 @@ const MyBooking = () => {
                                 </h3>
                               </div>
                             </td>
-
                           </tr>
                         ))}
                       </tbody>
@@ -228,124 +322,136 @@ const MyBooking = () => {
                     {/* Update modal__ST */}
 
                     <div>
-                              <div className="relative flex justify-center">
-                                {isOpen && (
-                                  <>
-                                    {/* Background overlay */}
-                                    <div 
-                                    
-                                    className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+                      <div className="relative flex justify-center">
+                        {isOpen && (
+                          <>
+                            {/* Background overlay */}
+                            <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
 
-                                    {/* Modal content */}
-                                    <div
-                                      className="fixed inset-0 z-20 overflow-y-auto"
-                                      aria-labelledby="modal-title"
-                                      role="dialog"
-                                      aria-modal="true"
-                                    >
-                                      <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-                                        <span
-                                          className="hidden sm:inline-block sm:h-screen sm:align-middle"
-                                          aria-hidden="true"
-                                        >
-                                          &#8203;
-                                        </span>
+                            {/* Modal content */}
+                            <div
+                              className="fixed inset-0 z-20 overflow-y-auto"
+                              aria-labelledby="modal-title"
+                              role="dialog"
+                              aria-modal="true"
+                            >
+                              <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                                <span
+                                  className="hidden sm:inline-block sm:h-screen sm:align-middle"
+                                  aria-hidden="true"
+                                >
+                                  &#8203;
+                                </span>
 
-                                        <div
-                                        data-aos="fade-up"
-                                        data-aos-easing="linear"
-                                        data-aos-duration="1000" 
-                                        className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
-                                          <h3
-                                            className="text-2xl pb-5 font-bold leading-6 text-center text-gray-800 capitalize dark:text-white"
-                                            id="modal-title"
-                                          >
-                                            Update your booking
-                                          </h3>
-                                          <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                                            You can update their bookings, but
-                                            updates are allowed only within 3
-                                            days of the booking. After 3 days,
-                                            changes are not possible.
-                                          </p>
+                                <div
+                                  data-aos="fade-up"
+                                  data-aos-easing="linear"
+                                  data-aos-duration="500"
+                                  className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle"
+                                >
+                                  <h3
+                                    className="text-2xl pb-5 font-bold leading-6 text-center text-gray-800 capitalize dark:text-white"
+                                    id="modal-title"
+                                  >
+                                    Update your booking
+                                  </h3>
+                                  <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                                    You can update their bookings, but updates
+                                    are allowed only within 3 days of the
+                                    booking. After 3 days, changes are not
+                                    possible.
+                                  </p>
 
-                                          <form className="mt-4">
+                                  <form onSubmit={handleUpdate} className="mt-4">
+                                    <div>
+                                      <p className="pl-1 mt-5 font-medium">
+                                        Full name
+                                      </p>
 
-                                            <div>
-                                              <p className="pl-1 mt-5 font-medium">Full name</p>
-
-                                              <input
-                                                type="text"
-                                                name="name"
-                                                defaultValue={roomBookingInfo.userName}
-                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                                              />
-
-                                            </div>
-
-                                            <div>
-                                              <p className="pl-1 mt-4 font-medium">Enter your email</p>
-                                              <input
-                                                type="text"
-                                                name="email"
-                                                defaultValue={roomBookingInfo.contactUserEmail}
-                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                                              />
-
-                                            </div>
-
-                                            <div>
-                                              <p className="pl-1 mt-4 font-medium">New check-in date</p>
-                                              <input
-                                                type="date"
-                                                name="checkin"
-                                                defaultValue={roomBookingInfo.checkInDate}
-                                                // value={(event) => setCheckIn(event.target.value)}
-                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                                              />
-                                            </div>
-
-                                            <div>
-                                              <p className="pl-1 mt-4 font-medium">New check-up date</p>
-                                              <input
-                                                type="date"
-                                                name="checkup"
-                                                defaultValue={roomBookingInfo.checkOutDate}
-                                                // value={(event) => setCheckOut(event.target.value)}
-                                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                                              />
-                                            </div>
-
-                                            <div className="mt-4 sm:flex sm:items-center sm:-mx-2">
-                                              <button
-                                                type="button"
-                                                onClick={() => {
-                                                  setIsOpen(false);;
-                                                }}
-                                                className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
-                                              >
-                                                Cancel
-                                              </button>
-
-                                              <button
-                                                type="submit"
-                                                className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
-                                              >
-                                                Update
-                                              </button>
-                                            </div>
-
-                                          </form>
-                                        </div>
-                                      </div>
+                                      <input
+                                        type="text"
+                                        name="name"
+                                        defaultValue={roomBookingInfo.userName}
+                                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                      />
                                     </div>
-                                  </>
-                                )}
+
+                                    <div>
+                                      <p className="pl-1 mt-4 font-medium">
+                                        Enter your email
+                                      </p>
+                                      <input
+                                        type="text"
+                                        name="email"
+                                        defaultValue={
+                                          roomBookingInfo.contactUserEmail
+                                        }
+                                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                      />
+                                    </div>
+
+                                    <div>
+                                      <p className="pl-1 mt-4 font-medium">
+                                        New check-in date
+                                      </p>
+                                      <input
+                                        type="date"
+                                        name="checkin"
+                                        value={checkInDate}
+                                        onChange={(e) => setCheckInDate(e.target.value)}
+                                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                      />
+                                    </div>
+
+                                    <div>
+                                      <p className="pl-1 mt-4 font-medium">
+                                        New check-up date
+                                      </p>
+                                      <input
+                                        type="date"
+                                        name="checkout"
+                                        value={checkOutDate}
+                                        onChange={(e) => setCheckOutDate(e.target.value)}
+                                        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                      />
+                                    </div>
+
+                                    <div className="mt-4 sm:flex sm:items-center sm:-mx-2">
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setIsOpen(false);
+                                          setCheckInDate("");
+                                          setCheckOutDate("");
+                                          setRoomPrice(0);
+                                        }}
+                                        className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
+                                      >
+                                        Cancel
+                                      </button>
+
+                                      <button
+                                        type="submit"
+                                        className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                      >
+                                        Update
+                                      </button>
+                                    </div>
+
+                                    <div>
+                                      <span className="w-full text-sm text-red-500 text-center">{errorMessage}</span>
+                                    </div>
+
+                                  </form>
+                                </div>
                               </div>
                             </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
 
-                            {/* Update modal__END */}
-
+                    {/* Update modal__END */}
                   </div>
                 </div>
               </div>
