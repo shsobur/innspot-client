@@ -19,15 +19,14 @@ const MyBooking = () => {
   const [roomBookingInfo, setRoomBookingInfo] = useState([]);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [errorMessage, setErrorMessage]= useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [totalDays, setTotalDays] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [roomPrice, setRoomPrice] = useState(0);
+  const [roomPriceParNight, setRoomPriceParNight] = useState(null);
 
   const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate ,setCheckOutDate] = useState("");
-
+  const [checkOutDate, setCheckOutDate] = useState("");
 
   const url = `http://localhost:5000/bookings/${user?.email}`;
 
@@ -72,7 +71,7 @@ const MyBooking = () => {
     const startDay = new Date(checkInDate);
     const endDay = new Date(checkOutDate);
 
-    if(endDay <= startDay) {
+    if (endDay <= startDay) {
       const Toast = Swal.mixin({
         toast: true,
         position: "top",
@@ -82,34 +81,37 @@ const MyBooking = () => {
         didOpen: (toast) => {
           toast.onmouseenter = Swal.stopTimer;
           toast.onmouseleave = Swal.resumeTimer;
-        }
+        },
       });
       Toast.fire({
         icon: "error",
-        title: "Wrong check out date, use valid"
+        title: "Wrong check out date, use valid",
       });
     }
 
     const totalTime = endDay - startDay;
-    const totalDays = totalTime / (1000 * 60 * 60* 24)
+    const totalDays = totalTime / (1000 * 60 * 60 * 24);
 
     return totalDays;
-  }
+  };
 
   useEffect(() => {
     const days = handleUpdateTotalDays();
 
-    if(days > 0) {
+    if (days > 0) {
       setTotalDays(days);
-      setTotalPrice(days * roomPrice)
+      setTotalPrice(days * roomPriceParNight);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checkInDate, checkOutDate])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkInDate, checkOutDate]);
 
+  console.log(checkInDate, checkOutDate);
+
+  // Update booking info__
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    if(!checkInDate || !checkOutDate) {
+    if (!checkInDate || !checkOutDate) {
       console.log("on input value");
       setErrorMessage("Please fulfill the input");
       return;
@@ -121,6 +123,7 @@ const MyBooking = () => {
 
     const userName = form.name.value;
     const contactUserEmail = form.email.value;
+    const id = roomBookingInfo._id;
 
     const updateBookingValue = {
       userName,
@@ -128,24 +131,42 @@ const MyBooking = () => {
       checkInDate,
       checkOutDate,
       totalDays,
-      totalPrice
-    }
+      totalPrice,
+    };
 
-    if(totalPrice === 0) {
+    if (totalPrice === 0) {
       Swal.fire({
         title: "Wrong submition",
         text: "You are not fill the form correctly!. Try again",
-        icon: "warning"
+        icon: "warning",
       });
       return;
     }
 
     console.log(updateBookingValue);
 
+    axiosSecure.patch(`/bookings/${id}`, updateBookingValue).then((res) => {
+      console.log(res.data);
+      setIsOpen(false);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Updated successfully",
+      });
+    });
+
     setCheckInDate("");
     setCheckOutDate("");
-    setRoomPrice(0);
-
   };
 
   return (
@@ -170,7 +191,6 @@ const MyBooking = () => {
               <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                   <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-
                     <table className="table_container min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                       <thead className="bg-[#7c6a46] text-white dark:bg-gray-800">
                         <tr>
@@ -299,7 +319,10 @@ const MyBooking = () => {
                                     onClick={() => {
                                       setIsOpen(true);
                                       setRoomBookingInfo(booking);
-                                      setRoomPrice(roomBookingInfo.priceParNight);
+                                      setRoomPriceParNight(
+                                        booking.priceParNight
+                                      );
+                                      console.log(booking.priceParNight);
                                       console.log(booking);
                                     }}
                                   >
@@ -362,7 +385,10 @@ const MyBooking = () => {
                                     possible.
                                   </p>
 
-                                  <form onSubmit={handleUpdate} className="mt-4">
+                                  <form
+                                    onSubmit={handleUpdate}
+                                    className="mt-4"
+                                  >
                                     <div>
                                       <p className="pl-1 mt-5 font-medium">
                                         Full name
@@ -398,7 +424,9 @@ const MyBooking = () => {
                                         type="date"
                                         name="checkin"
                                         value={checkInDate}
-                                        onChange={(e) => setCheckInDate(e.target.value)}
+                                        onChange={(e) =>
+                                          setCheckInDate(e.target.value)
+                                        }
                                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                       />
                                     </div>
@@ -411,7 +439,9 @@ const MyBooking = () => {
                                         type="date"
                                         name="checkout"
                                         value={checkOutDate}
-                                        onChange={(e) => setCheckOutDate(e.target.value)}
+                                        onChange={(e) =>
+                                          setCheckOutDate(e.target.value)
+                                        }
                                         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                       />
                                     </div>
@@ -423,7 +453,6 @@ const MyBooking = () => {
                                           setIsOpen(false);
                                           setCheckInDate("");
                                           setCheckOutDate("");
-                                          setRoomPrice(0);
                                         }}
                                         className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
                                       >
@@ -439,9 +468,10 @@ const MyBooking = () => {
                                     </div>
 
                                     <div>
-                                      <span className="w-full text-sm text-red-500 text-center">{errorMessage}</span>
+                                      <span className="w-full text-sm text-red-500 text-center">
+                                        {errorMessage}
+                                      </span>
                                     </div>
-
                                   </form>
                                 </div>
                               </div>
