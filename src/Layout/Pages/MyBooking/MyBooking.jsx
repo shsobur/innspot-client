@@ -28,7 +28,7 @@ const MyBooking = () => {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
 
-  const url = `http://localhost:5000/bookings/${user?.email}`;
+  const url = `/bookings/${user?.email}`;
 
   useEffect(() => {
     axiosSecure.get(url).then((res) => {
@@ -148,6 +148,16 @@ const MyBooking = () => {
     axiosSecure.patch(`/bookings/${id}`, updateBookingValue).then((res) => {
       console.log(res.data);
       setIsOpen(false);
+
+      // Refetch the updated data from the server__
+      axiosSecure.get(`/bookings/${user?.email}`)
+      .then(res => {
+        setBookings(res.data)
+      })
+      .catch((error) => {
+        console.error("Error fetching updated data:", error);
+      });
+
       const Toast = Swal.mixin({
         toast: true,
         position: "top",
