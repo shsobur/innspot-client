@@ -7,7 +7,6 @@ const FeaturedRooms = () => {
       <div className="main_container">
         <div className="main_featured_outer_container">
           <div className="main_featured_inner_container">
-
             <div className="featured_title_container">
               <h2>Featured Rooms</h2>
               <p>
@@ -59,9 +58,10 @@ const FeaturedRooms = () => {
             </div>
 
             <div className="featured_btn_container">
-              <button><Link to="/room">Book Now</Link></button>
+              <Link to="/room">
+                <button>Book Now</button>
+              </Link>
             </div>
-
           </div>
         </div>
       </div>

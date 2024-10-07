@@ -77,76 +77,78 @@ const NavBar = () => {
                 }`}
               >
                 <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
-                  <p
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
+                        : "text-[#151515] "
+                    }
                   >
-                    <NavLink
-                      to="/"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
-                          : "text-[#151515] "
-                      }
+                    <p
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       Home
-                    </NavLink>
-                  </p>
+                    </p>
+                  </NavLink>
 
-                  <p
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <NavLink
+                    to="/room"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
+                        : "text-[#151515]"
+                    }
                   >
-                    <NavLink
-                      to="/room"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
-                          : "text-[#151515]"
-                      }
+                    <p
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       Room
-                    </NavLink>
-                  </p>
+                    </p>
+                  </NavLink>
 
-                  <p
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <NavLink
+                    to="/mybooking"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
+                        : "text-[#151515]"
+                    }
                   >
-                    <NavLink
-                      to="/mybooking"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
-                          : "text-[#151515]"
-                      }
+                    <p
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       My Booking
-                    </NavLink>
-                  </p>
+                    </p>
+                  </NavLink>
 
-                  <p
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <NavLink>Contact Us</NavLink>
-                  </p>
+                  <NavLink>
+                    <p
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Contact Us
+                    </p>
+                  </NavLink>
 
-                  <p
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  <NavLink
+                    to="/aboutus"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
+                        : "text-[#151515] "
+                    }
                   >
-                    <NavLink
-                      to="/aboutus"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
-                          : "text-[#151515] "
-                      }
+                    <p
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       About Us
-                    </NavLink>
-                  </p>
+                    </p>
+                  </NavLink>
                 </div>
 
                 <div className=" lg:flex lg:items-center mt-4 lg:mt-0">

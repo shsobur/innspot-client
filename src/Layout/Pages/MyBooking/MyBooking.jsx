@@ -11,6 +11,7 @@ import { AuthContext } from "@/Layout/Components/AuthProvider/AuthProvider";
 import Loading from "@/Layout/Components/Loading/Loading";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import ScrollToTop from "@/Layout/Components/ScrollToTop/ScrollToTop";
 
 const MyBooking = () => {
   const axiosSecure = useAxiosSecure();
@@ -181,6 +182,9 @@ const MyBooking = () => {
 
   return (
     <>
+    {/* Function to scroll to top */}
+    <ScrollToTop></ScrollToTop>
+
       <div className="main_container">
         <div className="main_booking_list_outer_container">
           <div className="booking_list_container">

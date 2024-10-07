@@ -19,7 +19,6 @@ const HomeBaner = () => {
       <div className="main_container">
         <div className="main_baner_outer_container">
           <div className="main_baner_inner_container">
-
             <div className="baner_bg_image_main_container">
               <Swiper
                 loop={true}
@@ -62,7 +61,9 @@ const HomeBaner = () => {
                 <h1>Paradise View</h1>
                 <h2>Hotel for every moment rich in emotion</h2>
                 <p>Every moment feels like the first time in paradise view</p>
-                <button><Link to="/room">Book Now</Link></button>
+                <Link to="/room">
+                  <button>Book Now</button>
+                </Link>
               </div>
 
               {/* __Baner left side content__ */}
@@ -100,7 +101,6 @@ const HomeBaner = () => {
                 </Swiper>
               </div>
             </div>
-
           </div>
         </div>
       </div>
