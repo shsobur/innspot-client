@@ -18,6 +18,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 const RoomCardDetails = () => {
   const roomInfo = useLoaderData();
@@ -26,6 +27,9 @@ const RoomCardDetails = () => {
 
   return (
     <>
+    {/* function to scroll to top */}
+    <ScrollToTop></ScrollToTop>
+
       <div className="main_container">
         <div className="main_card_details_outer_container">
           <div className="main_card_details_inner_container">

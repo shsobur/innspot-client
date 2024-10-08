@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import useAxiosSecure from "@/Hooks/useAxiosSecure/useAxiosSecure";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 const BookingPage = () => {
   const location = useLocation();
@@ -139,6 +140,9 @@ const BookingPage = () => {
 
   return (
     <>
+    {/* function to scroll to top */}
+    <ScrollToTop></ScrollToTop>
+
       <div className="main_container">
         <div className="main_booking_outer_container">
 
