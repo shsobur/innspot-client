@@ -105,3 +105,119 @@
   background-color: #2ea890;
 }
 
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .main_newsletter_inner_container {
+    padding: 100px 70px;
+  }
+
+  .newsletter_section_main_container {
+    padding: 30px;
+  }
+
+  .newsletter_section_left_side_container span {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+  
+  .newsletter_section_left_side_container h2 {
+    font-size: 1.8rem;
+  }
+
+  .newsletter_section_right_side_container {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main_newsletter_inner_container {
+    padding: 100px 60px;
+  }
+
+  .newsletter_section_main_container {
+    padding: 10px;
+  }
+
+  .newsletter_section_left_side_container span {
+    font-size: 14px;
+    padding: 0 5px;
+  }
+  
+  .newsletter_section_left_side_container h2 {
+    font-size: 1.2rem;
+  }
+
+  .newsletter_section_right_side_container {
+    width: 45%;
+  }
+
+  .newsletter_input_container input {
+    padding: 8px;
+  }
+
+  .newsletter_input_container button {
+    padding: 8px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main_newsletter_inner_container {
+    padding: 80px 50px;
+  }
+
+  .newsletter_section_main_container {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .newsletter_section_left_side_container {
+    height: auto;
+    width: 100%;
+  }
+  
+  .newsletter_section_right_side_container {
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main_newsletter_outer_container {
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .main_newsletter_inner_container {
+    padding: 30px;
+  }
+
+  .newsletter_section_main_container {
+    padding: 15px;
+  }
+
+  .newsletter_section_left_side_container span {
+    font-size: 12px;
+    padding: 0 5px;
+  }
+
+  .newsletter_section_left_side_container span {
+    padding: 0px;
+  }
+
+  .newsletter_section_left_side_container h2 {
+    font-size: 16px;
+  }
+
+  .newsletter_input_container input {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .newsletter_input_container button {
+    padding: 6px;
+    font-size: 12px;
+  }
+}
