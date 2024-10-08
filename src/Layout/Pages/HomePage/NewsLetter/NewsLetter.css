@@ -1,0 +1,107 @@
+.main_newsletter_outer_container {
+  height: auto;
+  width: 100%;
+  margin-top: 100px;
+  padding: 10px 30px;
+}
+
+.main_newsletter_inner_container {
+  height: auto;
+  width: 100%;
+  padding: 120px 80px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://i.ibb.co.com/QmJ1r6m/sara-dubler-Koei-7y-Yt-Io-unsplash-1.jpg");
+}
+
+/* Newsletter main two container style__st */
+
+.newsletter_section_main_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 50px;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.750);
+}
+
+.newsletter_section_left_side_container {
+  height: auto;
+  width: auto;
+}
+
+.newsletter_section_right_side_container {
+  height: auto;
+  width: 30%;
+}
+
+/* Newsletter main two container style__end */
+
+
+/* Newsletter left side content style__ */
+
+.newsletter_section_left_side_container {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.newsletter_section_left_side_container span {
+  color: #37c5a8;
+  font-size: 1.4rem;
+  padding: 0 20px;
+}
+
+.newsletter_section_left_side_container h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+/* Newsletter right side content style__ */
+
+.newsletter_input_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter_input_container input {
+  width: 100%;
+  outline: none;
+  padding: 10px 10px;
+  border-radius: 8px;
+  border-bottom: 3px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.newsletter_input_container input:focus {
+  transition: 0.3s ease-in-out;
+  border-bottom: 3px solid #37c5a8;
+  border-left: 4px solid #37c5a8;
+}
+
+.newsletter_input_container button {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: #37c5a8;
+  font-family: "Raleway", sans-serif;
+}
+
+.newsletter_input_container button:hover {
+  background-color: #32b59b;
+}
+
+.newsletter_input_container button:active {
+  background-color: #2ea890;
+}
+
