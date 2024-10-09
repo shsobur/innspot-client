@@ -8,9 +8,10 @@ import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa";
+import ScrollToTop from "@/Layout/Components/ScrollToTop/ScrollToTop";
 
 const SignIn = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, loading } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
@@ -62,6 +63,8 @@ const SignIn = () => {
 
   return (
     <>
+    <ScrollToTop></ScrollToTop>
+
       <div className="main_container">
         <div className="main_authentication_container">
           <div
@@ -131,8 +134,17 @@ const SignIn = () => {
                   </div>
                 </div>
 
-                <div className="form_sub_button">
-                  <input type="submit" value="Sign In" />
+                <div>
+                  {loading ? (
+                    <div className="bg-[#7c6a46] py-2 mt-6 text-white font-semibold rounded-lg text-center">
+                      loading...
+                      <button className="w-5 h-5 ml-3 border-4 border-dashed rounded-full animate-spin border-[#ffffff]"></button>
+                    </div>
+                  ) : (
+                    <div className="form_sub_button">
+                      <input type="submit" value="Sign Up" />
+                    </div>
+                  )}
                 </div>
 
                 <div className="text-red-600 pb-5">

@@ -1,13 +1,14 @@
-import { createBrowserRouter } from "react-router-dom";
 import Main from "../Main/Main";
-import HomePageLayout from "../Layout/Pages/HomePage/HomePageLayout/HomePageLayout";
+import PrivetRoute from "./PrivetRoute";
+import { createBrowserRouter } from "react-router-dom";
+import MyBooking from "@/Layout/Pages/MyBooking/MyBooking";
 import SignIn from "../Layout/Pages/Authentication/SignIn/SignIn";
 import SignUp from "../Layout/Pages/Authentication/SignUp/SignUp";
-import AboutUsPageLayout from "../Layout/Pages/AboutUsPage/AboutUsPageLayout/AboutUsPageLayout";
-import RoomPageLayout from "../Layout/Pages/RoomPage/RoomPageLayout/RoomPageLayout";
-import RoomCardDetails from "../Layout/Components/RoomCardDetails/RoomCardDetails";
 import BookingPage from "@/Layout/Components/BookingPage/BookingPage";
-import MyBooking from "@/Layout/Pages/MyBooking/MyBooking";
+import RoomCardDetails from "../Layout/Components/RoomCardDetails/RoomCardDetails";
+import HomePageLayout from "../Layout/Pages/HomePage/HomePageLayout/HomePageLayout";
+import RoomPageLayout from "../Layout/Pages/RoomPage/RoomPageLayout/RoomPageLayout";
+import AboutUsPageLayout from "../Layout/Pages/AboutUsPage/AboutUsPageLayout/AboutUsPageLayout";
 
 const router = createBrowserRouter([
   {
@@ -24,17 +25,29 @@ const router = createBrowserRouter([
       },
       {
         path: "/room/:id",
-        element: <RoomCardDetails></RoomCardDetails>,
+        element: (
+          <PrivetRoute>
+            <RoomCardDetails></RoomCardDetails>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/rooms/${params.id}`),
       },
       {
         path: "/booking",
-        element: <BookingPage></BookingPage>,
+        element: (
+          <PrivetRoute>
+            <BookingPage></BookingPage>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/mybooking",
-        element: <MyBooking></MyBooking>,
+        element: (
+          <PrivetRoute>
+            <MyBooking></MyBooking>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/aboutus",

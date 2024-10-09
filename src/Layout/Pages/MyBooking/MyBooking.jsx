@@ -3,15 +3,15 @@ import Swal from "sweetalert2";
 import { IoBagCheck } from "react-icons/io5";
 import { LiaEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { FaRegCalendarCheck } from "react-icons/fa";
+import { FaBars, FaRegCalendarCheck } from "react-icons/fa";
 
 import useAxiosSecure from "@/Hooks/useAxiosSecure/useAxiosSecure";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/Layout/Components/AuthProvider/AuthProvider";
 import Loading from "@/Layout/Components/Loading/Loading";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { IoIosInformationCircleOutline } from "react-icons/io";
 import ScrollToTop from "@/Layout/Components/ScrollToTop/ScrollToTop";
+import { MdApps } from "react-icons/md";
 
 const MyBooking = () => {
   const axiosSecure = useAxiosSecure();
@@ -29,7 +29,19 @@ const MyBooking = () => {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
 
+  // const [tableStyle, setTableStyle] = useState(true);
+  // const [tableBoxStyle, setTableBoxStyle] = useState(false);
+
   const url = `/bookings/${user?.email}`;
+
+  // Handleing change table toggle__
+  // const handleTableStyle = () => {
+    
+  // }
+
+  // const handleTableBoxStyle = () => {
+    
+  // }
 
   useEffect(() => {
     axiosSecure.get(url).then((res) => {
@@ -205,7 +217,7 @@ const MyBooking = () => {
               <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                   <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-                    <table className="table_container min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                       <thead className="bg-[#7c6a46] text-white dark:bg-gray-800">
                         <tr>
                           <th
@@ -257,14 +269,19 @@ const MyBooking = () => {
 
                           <th
                             scope="col"
-                            className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-400"
+                            className="flex items-center  px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-400"
                           >
                             Edit
+                            <div className="flex gap-2 items-center">
+                            <p className="pl-10 text-2xl cursor-pointer"><FaBars /></p>
+                            <p className="text-3xl cursor-pointer"><MdApps /></p>
+                            </div>
                           </th>
+
                         </tr>
                       </thead>
 
-                      <tbody className="table_body_container bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                      <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                         {bookings.map((booking) => (
                           <tr key={booking._id}>
                             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -277,10 +294,10 @@ const MyBooking = () => {
                                   />
                                   <div>
                                     <h2 className="font-medium text-gray-800 dark:text-white">
-                                      {booking.roomName}
+                                      {booking.userName}
                                     </h2>
                                     <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                                      {booking.roomCategory}
+                                      Type: {booking.roomCategory}
                                     </p>
                                   </div>
                                 </div>
@@ -344,11 +361,6 @@ const MyBooking = () => {
                                   </button>
                                 </h3>
 
-                                <h3 className="text-gray-500 transition-colors duration-200 dark:hover:text-green-500 dark:text-gray-300 hover:text-green-500 focus:outline-none">
-                                  <button>
-                                    <IoIosInformationCircleOutline />
-                                  </button>
-                                </h3>
                               </div>
                             </td>
                           </tr>
@@ -367,7 +379,7 @@ const MyBooking = () => {
 
                             {/* Modal content */}
                             <div
-                              className="fixed inset-0 z-20 overflow-y-auto"
+                              className="fixed inset-0 z-25 overflow-y-auto"
                               aria-labelledby="modal-title"
                               role="dialog"
                               aria-modal="true"

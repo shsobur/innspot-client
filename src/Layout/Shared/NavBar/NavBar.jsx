@@ -109,21 +109,23 @@ const NavBar = () => {
                     </p>
                   </NavLink>
 
-                  <NavLink
-                    to="/mybooking"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
-                        : "text-[#151515]"
-                    }
-                  >
-                    <p
-                      onClick={() => setIsOpen(!isOpen)}
-                      className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  {user && (
+                    <NavLink
+                      to="/mybooking"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
+                          : "text-[#151515]"
+                      }
                     >
-                      My Booking
-                    </p>
-                  </NavLink>
+                      <p
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        My Booking
+                      </p>
+                    </NavLink>
+                  )}
 
                   <NavLink>
                     <p
@@ -164,7 +166,7 @@ const NavBar = () => {
                             <div>
                               <img
                                 className="h-8 w-8 border-2 border-[#7c6a46] rounded-full"
-                                src={user.photoURL}
+                                src={user?.photoURL}
                                 alt="img missing"
                               />
                             </div>

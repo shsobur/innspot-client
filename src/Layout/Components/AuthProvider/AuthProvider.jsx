@@ -7,43 +7,71 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
-  console.log(user);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
 
-  const signUpUser = (email, password) => {
+  const signUpUser = async (email, password) => {
     setLoading(true)
-    return createUserWithEmailAndPassword(auth, email, password);
-  }
 
-  const signInUser = (email, password) => {
-    setLoading(true)
-    return signInWithEmailAndPassword(auth, email, password);
-  }
+    try{
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      return result;
+    }catch(error) {
+      console.log("Error signing in:", error)
+    }finally{
+      setLoading(false);
+    }
+  };
 
-  const googleSigninUser = () => {
+  const signInUser = async (email, password) => {
     setLoading(true)
-    return signInWithPopup(auth, googleProvider);
-  }
+
+    try{
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      return result;
+    }catch(error) {
+      console.log("Error signing up:", error);
+    }finally{
+      setLoading(false);
+    }
+  };
+
+  const googleSigninUser = async () => {
+    setLoading(true)
+
+    try{
+      const result = await signInWithPopup(auth, googleProvider);
+      return result;
+    }catch(error) {
+      console.log("Error google signing up:", error)
+    }finally{
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
+    const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
       setLoading(false);
     })
-  }, [])
+    return () => {
+      unSubcribe();
+    }
+  }, []);
 
   const updateUserProfile = (name, photo) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo
     })
-  }
+  };
 
   const logOut = () => {
+    setLoading();
     return signOut(auth);
-  }
+  };
 
   const authInfo = {
     user,
@@ -53,7 +81,7 @@ const AuthProvider = ({children}) => {
     updateUserProfile,
     googleSigninUser,
     logOut
-  }
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>
@@ -64,6 +92,6 @@ const AuthProvider = ({children}) => {
 
 AuthProvider.propTypes = {
   children: PropTypes.node
-}
+};
 
 export default AuthProvider;
