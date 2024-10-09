@@ -375,11 +375,11 @@ const MyBooking = () => {
                         {isOpen && (
                           <>
                             {/* Background overlay */}
-                            <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+                            <div className="fixed inset-0 bg-black bg-opacity-50 z-5"></div>
 
                             {/* Modal content */}
                             <div
-                              className="fixed inset-0 z-25 overflow-y-auto"
+                              className="fixed inset-0 z-22 overflow-y-auto"
                               aria-labelledby="modal-title"
                               role="dialog"
                               aria-modal="true"

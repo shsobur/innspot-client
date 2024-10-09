@@ -3,6 +3,7 @@ import Facilities from "../Facilities/Facilities";
 import FeaturedRooms from "../FeaturedRooms/FeaturedRooms";
 import HomeBaner from "../HomeBaner/HomeBaner";
 import NewsLetter from "../NewsLetter/NewsLetter";
+import HotelMap from "../HotelMap/HotelMap";
 
 const HomePageLayout = () => {
   return (
@@ -13,7 +14,8 @@ const HomePageLayout = () => {
         <HomeBaner></HomeBaner>
         <Facilities></Facilities>
         <FeaturedRooms></FeaturedRooms>
-        <NewsLetter></NewsLetter> 
+        <HotelMap></HotelMap>
+        <NewsLetter></NewsLetter>
       </div>
 
     </>
