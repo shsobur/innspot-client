@@ -7,6 +7,7 @@ const FeaturedRooms = () => {
       <div className="main_container">
         <div className="main_featured_outer_container">
           <div className="main_featured_inner_container">
+
             <div className="featured_title_container">
               <h2>Featured Rooms</h2>
               <p>
@@ -19,7 +20,7 @@ const FeaturedRooms = () => {
               <div
                 data-aos="fade-right"
                 data-aos-easing="linear"
-                data-aos-duration="1000"
+                data-aos-duration="800"
                 id="fectured_image_section_1"
                 className="featured_image_container"
               >
@@ -29,7 +30,7 @@ const FeaturedRooms = () => {
               <div
                 data-aos="fade-right"
                 data-aos-easing="linear"
-                data-aos-duration="1000"
+                data-aos-duration="800"
                 id="fectured_image_section_2"
                 className="featured_image_container"
               >
@@ -39,7 +40,7 @@ const FeaturedRooms = () => {
               <div
                 data-aos="fade-right"
                 data-aos-easing="linear"
-                data-aos-duration="1000"
+                data-aos-duration="800"
                 id="fectured_image_section_3"
                 className="featured_image_container"
               >
@@ -49,7 +50,7 @@ const FeaturedRooms = () => {
               <div
                 data-aos="fade-right"
                 data-aos-easing="linear"
-                data-aos-duration="1000"
+                data-aos-duration="800"
                 id="fectured_image_section_4"
                 className="featured_image_container"
               >
@@ -62,6 +63,7 @@ const FeaturedRooms = () => {
                 <button>Book Now</button>
               </Link>
             </div>
+
           </div>
         </div>
       </div>

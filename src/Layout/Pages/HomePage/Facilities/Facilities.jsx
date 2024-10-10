@@ -13,6 +13,7 @@ const Facilities = () => {
         <div className="main_facilities_outer_container">
           <div className="main_facilities_inner_container">
             <div className="main_facilities_content_container">
+
               <div
                 className="facilities_title_container"
               >
@@ -25,9 +26,9 @@ const Facilities = () => {
               <div className="facilities_main_section">
 
                 <div
-                  data-aos="zoom-in"
+                  data-aos="fade-right"
                   data-aos-easing="linear"
-                  data-aos-duration="1000"
+                  data-aos-duration="800"
                   id="section_item_container_1"
                   className="facilities_section_item_container"
                 >
@@ -77,9 +78,9 @@ const Facilities = () => {
                 </div>
 
                 <div
-                  data-aos="zoom-in"
+                  data-aos="fade-right"
                   data-aos-easing="linear"
-                  data-aos-duration="1000"
+                  data-aos-duration="800"
                   id="section_item_container_2"
                   className="facilities_section_item_container"
                 >
@@ -143,9 +144,9 @@ const Facilities = () => {
                 </div>
 
                 <div
-                  data-aos="zoom-in"
+                  data-aos="fade-right"
                   data-aos-easing="linear"
-                  data-aos-duration="1000"
+                  data-aos-duration="800"
                   id="section_item_container_3"
                   className="facilities_section_item_container"
                 >

@@ -7,10 +7,11 @@ const NewsLetter = () => {
         <div className="main_newsletter_outer_container">
           <div className="main_newsletter_inner_container">
             <div className="newsletter_section_main_container">
+
               <div
                 data-aos="fade-up"
                 data-aos-easing="linear"
-                data-aos-duration="1000"
+                data-aos-duration="900"
                 className="newsletter_section_left_side_container"
               >
                 <span>NEWSLETTER SIGNUP FOR FREE</span>
@@ -29,6 +30,7 @@ const NewsLetter = () => {
                   <button type="submit">SUBCRIBE NOW</button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
