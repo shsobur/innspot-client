@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
 import "./RoomCards.css";
-import RoomCard from "../../../Components/RoomCard/RoomCard";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic/useAxiosPublic";
+import PropTypes from 'prop-types';
 import Loading from "../../../Components/Loading/Loading";
+import RoomCard from "../../../Components/RoomCard/RoomCard";
 
-const RoomCards = () => {
-  const [rooms, setRooms] = useState([]);
-  const axiosPublic = useAxiosPublic();
-  console.log(rooms)
 
-  useEffect(() => {
-    axiosPublic.get("/rooms")
-    .then(data => {
-      setRooms(data.data)
-    })
-  }, [axiosPublic])
+const RoomCards = ({rooms}) => {
 
   return (
     <>
@@ -31,5 +21,9 @@ const RoomCards = () => {
     </>
   );
 };
+
+RoomCards.propTypes = {
+  rooms: PropTypes.object
+}
 
 export default RoomCards;

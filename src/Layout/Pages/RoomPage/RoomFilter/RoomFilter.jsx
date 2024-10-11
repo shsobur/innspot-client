@@ -1,14 +1,21 @@
-import { IoSearch } from "react-icons/io5";
 import "./RoomFilter.css";
-import { FaRegCalendarAlt, FaUserFriends } from "react-icons/fa";
+import PropTypes from 'prop-types';
 import { useState } from "react";
+import { IoSearch } from "react-icons/io5";
+import { RiLineHeight } from "react-icons/ri";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
-const RoomFilter = () => {
+const RoomFilter = ({setSortValue, sortValue}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleSortValue = (e) => {
+    const { value } = e.target;
+    setSortValue(value);
+  }
 
   return (
     <>
@@ -16,6 +23,7 @@ const RoomFilter = () => {
         <div className="filter_section_outer_container">
           <div className="filter_section_inner_container">
             <div className="filter_main_outer_container">
+
               <div className="filter_search_container">
                 <h3>
                   <IoSearch />
@@ -40,7 +48,7 @@ const RoomFilter = () => {
                 <div className="guest-selector">
 
                   <button className="guest-button" onClick={toggleDropdown}>
-                    <span className="guest-icon"><FaUserFriends /></span>{" "}
+                    <span className="guest-icon"><RiLineHeight /></span>{" "}
                     Stor By
                     <span className="arrow">▼</span>
                   </button>
@@ -48,10 +56,9 @@ const RoomFilter = () => {
                   {isOpen && (
                     <div className="guest-dropdown">
                       <label>Choose</label>
-                      <select>
-                        <option value="1">Default</option>
-                        <option value="2">High to low</option>
-                        <option value="3">Low to high</option>
+                      <select value={sortValue} onChange={handleSortValue}>
+                        <option value={"asc"} >High to low</option>
+                        <option value={"des"} >Low to high</option>
                       </select>
                     </div>
                   )}
@@ -65,5 +72,10 @@ const RoomFilter = () => {
     </>
   );
 };
+
+RoomFilter.propTypes = {
+  sortValue: PropTypes.string,
+  setSortValue: PropTypes.string
+}
 
 export default RoomFilter;
