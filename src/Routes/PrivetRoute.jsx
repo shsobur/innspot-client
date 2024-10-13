@@ -6,8 +6,6 @@ import { AuthContext } from "@/Layout/Components/AuthProvider/AuthProvider";
 const PrivetRoute = ({children}) => {
   const {user, loading} = useContext(AuthContext);
 
-  console.log(loading);
-
   if(loading) {
     return(
       <>

@@ -86,6 +86,7 @@ const BookingPage = () => {
     const roomImage = roomInfo.images[0];
     const roomNumber = roomInfo.roomNumber;
     const roomCategory = roomInfo.category;
+    const availability = "Not-Available";
 
     const booking = {
       userName,
@@ -111,29 +112,48 @@ const BookingPage = () => {
       return;
     }
 
+    // Value of room state after booking__
+    const roomAvailability = {
+      availability
+    }
+
     axiosSecure.post("/bookings", booking)
     .then(res => {
       console.log(res.data)
 
       if(res.data.acknowledged) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top",
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          }
-        });
-        Toast.fire({
-          icon: "success",
-          title: "Room booked successfully"
-        });
 
-        navigate("/mybooking");
+        // Updating the room state value__
+        axiosSecure.patch(`/rooms/${roomInfo._id}`, roomAvailability)
+        .then(res => {
+          if(res.data.modifiedCount > 0) {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top",
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              }
+            });
+            Toast.fire({
+              icon: "success",
+              title: "Room booked successfully"
+            });
+          }
+
+          navigate("/mybooking");
+        })
+        .catch(error => {
+          console.log("Error on update room state value", error);
+        })
       }
+
+    })
+    .catch(error => {
+      console.log("Error on post booking", error);
     })
 
   }

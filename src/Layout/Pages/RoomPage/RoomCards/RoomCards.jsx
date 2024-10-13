@@ -23,7 +23,7 @@ const RoomCards = ({rooms}) => {
 };
 
 RoomCards.propTypes = {
-  rooms: PropTypes.object
+  rooms: PropTypes.array
 }
 
 export default RoomCards;

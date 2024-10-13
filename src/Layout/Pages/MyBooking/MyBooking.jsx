@@ -29,28 +29,21 @@ const MyBooking = () => {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
 
-  // const [tableStyle, setTableStyle] = useState(true);
-  // const [tableBoxStyle, setTableBoxStyle] = useState(false);
-
-  const url = `/bookings/${user?.email}`;
-
-  // Handleing change table toggle__
-  // const handleTableStyle = () => {
-    
-  // }
-
-  // const handleTableBoxStyle = () => {
-    
-  // }
+  const availability = "Available";
 
   useEffect(() => {
-    axiosSecure.get(url).then((res) => {
+    axiosSecure.get(`/bookings/${user?.email}`, {withCredentials: true})
+    .then((res) => {
       setBookings(res.data);
     });
-  }, [axiosSecure, url]);
+  }, [axiosSecure, user]);
 
   // Delete oparation__
-  const handleDelete = (id) => {
+  const handleDelete = (id, roomNumber) => {
+    const updateRoomState = {
+      availability
+    }
+
     // Sweet Alart befour delete__
     Swal.fire({
       title: "Are you sure?",
@@ -62,18 +55,30 @@ const MyBooking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/bookings/${id}`).then((res) => {
+        axiosSecure.delete(`/bookings/${id}`)
+        .then((res) => {
           if (res.data.deletedCount === 1) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
+
+            // Update room state after cancel booing__
+            axiosSecure.patch(`/cancelRoom/${roomNumber}`, updateRoomState)
+            .then(res => {
+              if(res.data.modifiedCount > 0) {
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+                });
+              }
+              
+            })
 
             const remaining = bookings.filter((booking) => booking._id !== id);
             setBookings(remaining);
           }
-        });
+        })
+        .catch(error => {
+          console.log("Error to delete booking",error)
+        })
       }
     });
   };
@@ -117,8 +122,6 @@ const MyBooking = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkInDate, checkOutDate]);
-
-  console.log(checkInDate, checkOutDate);
 
   // Update booking info__
   const handleUpdate = (e) => {
@@ -339,7 +342,7 @@ const MyBooking = () => {
                               <div className="flex items-center gap-x-6">
                                 <h3 className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                   <button
-                                    onClick={() => handleDelete(booking._id)}
+                                    onClick={() => handleDelete(booking._id, booking.roomNumber)}
                                   >
                                     <RiDeleteBin6Line />
                                   </button>

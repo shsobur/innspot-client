@@ -19,8 +19,6 @@ const RoomPageLayout = () => {
     })
   }, [axiosPublic, sortValue])
 
-  console.log(sortValue);
-
   return (
     <>
       <ScrollToTop></ScrollToTop>

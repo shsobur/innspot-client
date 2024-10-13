@@ -2,10 +2,13 @@ import PropTypes from 'prop-types';
 import auth from "../FirebaseConfig/Firebase.config";
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import useAxiosSecure from '@/Hooks/useAxiosSecure/useAxiosSecure';
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
+  const axiosSecure = useAxiosSecure();
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -53,13 +56,28 @@ const AuthProvider = ({children}) => {
   useEffect(() => {
     const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+
+      const email = currentUser?.email;
+      const userEmail = {email: email}
+
+      // JWT secret__
+      if(currentUser) {
+        axiosSecure.post("/jwt", userEmail, {withCredentials: true})
+        .then(res => {
+          console.log(res.data);
+        })
+      }
+      else{
+        console.log("Current user is missing");
+      }
+
       console.log(currentUser);
       setLoading(false);
     })
     return () => {
       unSubcribe();
     }
-  }, []);
+  }, [axiosSecure]);
 
   const updateUserProfile = (name, photo) => {
     return updateProfile(auth.currentUser, {
