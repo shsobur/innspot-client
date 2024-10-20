@@ -5,16 +5,15 @@ import { LiaEditSolid } from "react-icons/lia";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaBars, FaRegCalendarCheck } from "react-icons/fa";
 
-import useAxiosSecure from "@/Hooks/useAxiosSecure/useAxiosSecure";
+import { MdApps } from "react-icons/md";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "@/Layout/Components/AuthProvider/AuthProvider";
-import Loading from "@/Layout/Components/Loading/Loading";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import ScrollToTop from "@/Layout/Components/ScrollToTop/ScrollToTop";
-import { MdApps } from "react-icons/md";
+import { AuthContext } from "@/Layout/Components/AuthProvider/AuthProvider";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 const MyBooking = () => {
-  const axiosSecure = useAxiosSecure();
+  const { axiosSecure } = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [roomBookingInfo, setRoomBookingInfo] = useState([]);
@@ -32,8 +31,7 @@ const MyBooking = () => {
   const availability = "Available";
 
   useEffect(() => {
-    axiosSecure.get(`/bookings/${user?.email}`, {withCredentials: true})
-    .then((res) => {
+    axiosSecure.get(`/bookings/${user?.email}`).then((res) => {
       setBookings(res.data);
     });
   }, [axiosSecure, user]);
@@ -41,8 +39,8 @@ const MyBooking = () => {
   // Delete oparation__
   const handleDelete = (id, roomNumber) => {
     const updateRoomState = {
-      availability
-    }
+      availability,
+    };
 
     // Sweet Alart befour delete__
     Swal.fire({
@@ -55,30 +53,32 @@ const MyBooking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/bookings/${id}`)
-        .then((res) => {
-          if (res.data.deletedCount === 1) {
-
-            // Update room state after cancel booing__
-            axiosSecure.patch(`/cancelRoom/${roomNumber}`, updateRoomState)
-            .then(res => {
-              if(res.data.modifiedCount > 0) {
-                Swal.fire({
-                  title: "Deleted!",
-                  text: "Your file has been deleted.",
-                  icon: "success",
+        axiosSecure
+          .delete(`/bookings/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount === 1) {
+              // Update room state after cancel booing__
+              axiosSecure
+                .patch(`/cancelRoom/${roomNumber}`, updateRoomState)
+                .then((res) => {
+                  if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                      title: "Deleted!",
+                      text: "Your file has been deleted.",
+                      icon: "success",
+                    });
+                  }
                 });
-              }
-              
-            })
 
-            const remaining = bookings.filter((booking) => booking._id !== id);
-            setBookings(remaining);
-          }
-        })
-        .catch(error => {
-          console.log("Error to delete booking",error)
-        })
+              const remaining = bookings.filter(
+                (booking) => booking._id !== id
+              );
+              setBookings(remaining);
+            }
+          })
+          .catch((error) => {
+            console.log("Error to delete booking", error);
+          });
       }
     });
   };
@@ -166,13 +166,14 @@ const MyBooking = () => {
       setIsOpen(false);
 
       // Refetch the updated data from the server__
-      axiosSecure.get(`/bookings/${user?.email}`)
-      .then(res => {
-        setBookings(res.data)
-      })
-      .catch((error) => {
-        console.error("Error fetching updated data:", error);
-      });
+      axiosSecure
+        .get(`/bookings/${user?.email}`)
+        .then((res) => {
+          setBookings(res.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching updated data:", error);
+        });
 
       const Toast = Swal.mixin({
         toast: true,
@@ -197,14 +198,12 @@ const MyBooking = () => {
 
   return (
     <>
-    {/* Function to scroll to top */}
-    <ScrollToTop></ScrollToTop>
+      {/* Function to scroll to top */}
+      <ScrollToTop></ScrollToTop>
 
       <div className="main_container">
         <div className="main_booking_list_outer_container">
-          <div className="booking_list_container">
-            <Loading></Loading>
-          </div>
+          <div className="booking_list_container"></div>
 
           <section className="container px-4 mx-auto">
             <div className="flex items-center gap-x-3">
@@ -276,11 +275,14 @@ const MyBooking = () => {
                           >
                             Edit
                             <div className="flex gap-2 items-center">
-                            <p className="pl-10 text-2xl cursor-pointer"><FaBars /></p>
-                            <p className="text-3xl cursor-pointer"><MdApps /></p>
+                              <p className="pl-10 text-2xl cursor-pointer">
+                                <FaBars />
+                              </p>
+                              <p className="text-3xl cursor-pointer">
+                                <MdApps />
+                              </p>
                             </div>
                           </th>
-
                         </tr>
                       </thead>
 
@@ -342,7 +344,12 @@ const MyBooking = () => {
                               <div className="flex items-center gap-x-6">
                                 <h3 className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                                   <button
-                                    onClick={() => handleDelete(booking._id, booking.roomNumber)}
+                                    onClick={() =>
+                                      handleDelete(
+                                        booking._id,
+                                        booking.roomNumber
+                                      )
+                                    }
                                   >
                                     <RiDeleteBin6Line />
                                   </button>
@@ -363,7 +370,6 @@ const MyBooking = () => {
                                     <LiaEditSolid />
                                   </button>
                                 </h3>
-
                               </div>
                             </td>
                           </tr>

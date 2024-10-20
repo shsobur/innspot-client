@@ -2,7 +2,7 @@ import "./AboutInfo.css";
 import { useState } from "react";
 
 const AboutInfo = () => {
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false);
   const article = `The United Nations is an international organization founded in
                   1945. Currently made up of 193 Member States, the UN and its
                   work are guided by the purposes and principles contained in
@@ -40,27 +40,26 @@ const AboutInfo = () => {
                   António Guterres of Portugal, who took office on 1 January
                   2017. On the 18th of June, 2021, Guterres was re-appointed to
                   a second term, pledging as his priority to continue helping
-                  the world chart a course out of the COVID-19 pandemic.`
+                  the world chart a course out of the COVID-19 pandemic.`;
 
   const handleToggleExpanded = () => {
     setIsExpanded(!isExpanded);
-  }
+  };
 
   return (
     <>
       <div className="main_container">
         <div className="main_aboutInfo_outer_container">
           <div className="main_aboutInfo_inner_container">
-
             <div className="main_aboutInfo_contect_outer_container">
-
               <div className="aboutInfo_left_container">
-
                 <div className="aboutInfo_image_container">
-                  <img src="https://i.ibb.co.com/QJn3tR7/innspot.jpg" alt="image" />
-                  <h2>SOBUR HOSSEN (MANAGER)</h2>
+                  <img
+                    src="https://i.ibb.co.com/r3GjrzL/pexels-pranavdigwal-32976s.jpg"
+                    alt="image"
+                  />
+                  <h2>GUILLAUME FAURY (MANAGER)</h2>
                 </div>
-
               </div>
 
               <div className="aboutInfo_right_container">
@@ -71,10 +70,7 @@ const AboutInfo = () => {
                   {isExpanded ? "Read less" : "Read more"}
                 </button>
               </div>
-
             </div>
-                
-
           </div>
         </div>
       </div>

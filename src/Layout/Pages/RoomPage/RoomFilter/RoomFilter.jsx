@@ -57,8 +57,8 @@ const RoomFilter = ({setSortValue, sortValue}) => {
                     <div className="guest-dropdown">
                       <label>Choose</label>
                       <select value={sortValue} onChange={handleSortValue}>
-                        <option value={"asc"} >High to low</option>
-                        <option value={"des"} >Low to high</option>
+                        <option value={"des"} >High to low</option>
+                        <option value={"asc"} >Low to high</option>
                       </select>
                     </div>
                   )}

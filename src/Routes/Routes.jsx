@@ -9,11 +9,13 @@ import RoomCardDetails from "../Layout/Components/RoomCardDetails/RoomCardDetail
 import HomePageLayout from "../Layout/Pages/HomePage/HomePageLayout/HomePageLayout";
 import RoomPageLayout from "../Layout/Pages/RoomPage/RoomPageLayout/RoomPageLayout";
 import AboutUsPageLayout from "../Layout/Pages/AboutUsPage/AboutUsPageLayout/AboutUsPageLayout";
+import ErrorPage from "@/Layout/Components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

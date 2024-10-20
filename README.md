@@ -1,8 +1,21 @@
-# React + Vite
+# InnSopt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live sit URL :  
 
-Currently, two official plugins are available:
+### Features :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Eye-catching design and animations.
+* Simple and easy room booking system.
+* Authentication system with firebase.
+* More security with JWT.
+* Privet route for secret pages.
+
+###  npm package used:
+
+1. [Swiper slider](https://swiperjs.com/)
+2. [Axios](https://axios-http.com/docs/intro)
+3. [Pigeon Maps](https://pigeon-maps.js.org/)
+4. [React Hook form](https://react-hook-form.com/)
+5. [AOS Package](https://www.npmjs.com/package/aos)
+6. [Sweetalert2](https://sweetalert2.github.io/#download)
+7. [Scroll To Top](https://www.npmjs.com/package/react-scroll-to-top)

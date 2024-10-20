@@ -2,7 +2,7 @@
   height: 85vh;
   width: 100%;
   padding: 10px 30px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .main_baner_inner_container {
@@ -10,7 +10,7 @@
   width: 100%;
   position: relative;
   border-radius: 16px;
-  border-bottom: 4px solid #7C6A46;
+  border-bottom: 4px solid #7c6a46;
 }
 
 /* Baner bg content styleing */
@@ -41,7 +41,7 @@
   top: 0px;
   z-index: 10;
   border-radius: 16px;
-  background: linear-gradient(90.00deg, #151515,#1515151a 100%);
+  background: linear-gradient(90deg, #151515, #1515151a 100%);
 }
 
 /* Baner OverLay__ end */
@@ -78,7 +78,7 @@
   font-family: "Dancing Script", serif;
   font-size: 3.8rem;
   font-weight: 600;
-  color: #7C6A46;
+  color: #7c6a46;
 }
 
 .baner_left_contect_container h2 {
@@ -102,7 +102,7 @@
 .baner_left_contect_container button {
   font-weight: 600;
   color: #ffffff;
-  background-color: #7C6A46;
+  background-color: #7c6a46;
   margin: 20px 0;
   padding: 10px 30px;
 }
@@ -117,7 +117,7 @@
   height: 100%;
   width: 100%;
   border-radius: 16px;
-  border-bottom: 4px solid #7C6A46;
+  border-bottom: 4px solid #7c6a46;
 }
 
 /* Responsive design for home baner section__ */
@@ -191,6 +191,10 @@
 }
 
 @media screen and (max-width: 640px) {
+  .baner_bg_overlay {
+    background: linear-gradient(180deg, #151515, #1515152d 100%);
+  }
+
   .main_baner_content_container {
     flex-direction: column;
     justify-content: space-evenly;
@@ -209,17 +213,20 @@
   }
 
   .baner_left_contect_container h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #6a5a39;
   }
 
   .baner_left_contect_container h2 {
     font-size: 2rem;
-    padding:5px 0;
+    padding: 5px 0;
     line-height: 35px;
   }
 
   .baner_left_contect_container p {
     padding: 0 50px;
+    color: #8b8b8b;
   }
 
   .baner_left_contect_container button {
@@ -245,7 +252,7 @@
   }
 
   .baner_left_contect_container h1 {
-    font-size: 1.5rem;
+    font-weight: 700;
   }
 
   .baner_left_contect_container h2 {
@@ -254,6 +261,6 @@
   }
 
   .baner_left_contect_container p {
-    padding: 0 10px;
+    padding: 10px 40px;
   }
 }

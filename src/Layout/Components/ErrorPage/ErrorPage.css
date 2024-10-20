@@ -1,0 +1,23 @@
+.main_error_page_outer_container {
+  height: 100vh;
+  width: 100%;
+}
+
+.error_bg_image {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://i.ibb.co.com/wh70X7N/Darknet-404-Page-Concept-1.png");
+}
+
+.error_bg_image span {
+  color: #ffffff;
+  padding: 10px 20px;
+  font-weight: 600;
+  margin-top: 100px;
+  border-radius: 8px;
+  background-color: brown;
+}

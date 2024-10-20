@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import logoImg from "../../../assets/logo/logo.png";
-import { Link, NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 import { HiBars3 } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
-import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
 import { IoMdContact } from "react-icons/io";
+import { useContext, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import logoImg from "../../../assets/logo/logo.png";
+import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -127,7 +127,14 @@ const NavBar = () => {
                     </NavLink>
                   )}
 
-                  <NavLink>
+                  <NavLink
+                    to="/contact"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-[#7C6A46] border-b-2 border-b-[#7c6a46]"
+                        : "text-[#151515] "
+                    }
+                  >
                     <p
                       onClick={() => setIsOpen(!isOpen)}
                       className="px-3 py-2 mx-3 mt-2 font-semibold transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"

@@ -7,11 +7,11 @@ const Footer = () => {
 
   return (
     <>
-      <ScrollToTop 
-        smooth="true" 
-        top={1000} 
-        color="#7c6a46" 
-        height="20px" 
+      <ScrollToTop
+        smooth="true"
+        top={1000}
+        color="#7c6a46"
+        height="20px"
         width="38px"
       />
 
@@ -73,7 +73,6 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -83,7 +82,6 @@ const Footer = () => {
               Terms Of Use <span className="pl-4 pr-4">|</span> Privacy Policy
             </div>
           </div>
-
         </div>
       </div>
     </>
