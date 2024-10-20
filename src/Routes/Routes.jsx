@@ -33,7 +33,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/rooms/${params.id}`),
+          fetch(`https://innspot-bdserver.vercel.app/rooms/${params.id}`),
       },
       {
         path: "/booking",

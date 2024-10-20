@@ -30,11 +30,11 @@ const SignIn = () => {
     const email = data.email;
     const password = data.password;
 
-    console.log(email, password);
+    // console.log(email, password);
 
     signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        // console.log(result.user);
 
         // Sweet Alert__
         const Toast = Swal.mixin({
@@ -57,7 +57,7 @@ const SignIn = () => {
       })
       .catch((error) => {
         setError("Invalid! user or password. Try again");
-        console.log("Sing in erroe: ", error);
+        console.log("Sing in error: ", error);
       });
   };
 

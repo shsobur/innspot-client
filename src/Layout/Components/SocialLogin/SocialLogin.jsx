@@ -12,8 +12,8 @@ const SocialLogin = () => {
 
   const handleGoogleSingIn = () => {
     googleSigninUser()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        // console.log(result.user);
 
         // Sweet Alert__
         const Toast = Swal.mixin({

@@ -72,7 +72,7 @@ const BookingPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkIn, checkOut]);
 
-  console.log(checkIn, checkOut);
+  // console.log(checkIn, checkOut);
 
   const onSubmit = (data) => {
     const userName = data.name;
@@ -118,7 +118,7 @@ const BookingPage = () => {
     axiosSecure
       .post("/bookings", booking)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
 
         if (res.data.acknowledged) {
           // Updating the room state value__
@@ -146,12 +146,12 @@ const BookingPage = () => {
               navigate("/mybooking");
             })
             .catch((error) => {
-              console.log("Error on update room state value", error);
+              console.log("Error to update room state value", error);
             });
         }
       })
       .catch((error) => {
-        console.log("Error on post booking", error);
+        console.log("Error to post booking", error);
       });
   };
 

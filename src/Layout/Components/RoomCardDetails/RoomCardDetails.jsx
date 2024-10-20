@@ -23,7 +23,7 @@ import ScrollToTop from "../ScrollToTop/ScrollToTop";
 const RoomCardDetails = () => {
   const roomInfo = useLoaderData();
 
-  console.log(roomInfo);
+  // console.log(roomInfo);
 
   return (
     <>

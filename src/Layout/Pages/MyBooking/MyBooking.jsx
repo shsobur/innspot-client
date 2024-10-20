@@ -128,7 +128,7 @@ const MyBooking = () => {
     e.preventDefault();
 
     if (!checkInDate || !checkOutDate) {
-      console.log("on input value");
+      // console.log("on input value");
       setErrorMessage("Please fulfill the input");
       return;
     }
@@ -159,10 +159,10 @@ const MyBooking = () => {
       return;
     }
 
-    console.log(updateBookingValue);
+    // console.log(updateBookingValue);
 
-    axiosSecure.patch(`/bookings/${id}`, updateBookingValue).then((res) => {
-      console.log(res.data);
+    axiosSecure.patch(`/bookings/${id}`, updateBookingValue).then(() => {
+      // console.log(res.data);
       setIsOpen(false);
 
       // Refetch the updated data from the server__
@@ -172,7 +172,7 @@ const MyBooking = () => {
           setBookings(res.data);
         })
         .catch((error) => {
-          console.error("Error fetching updated data:", error);
+          console.error("Error to fetching updated data:", error);
         });
 
       const Toast = Swal.mixin({
@@ -363,8 +363,8 @@ const MyBooking = () => {
                                       setRoomPriceParNight(
                                         booking.priceParNight
                                       );
-                                      console.log(booking.priceParNight);
-                                      console.log(booking);
+                                      // console.log(booking.priceParNight);
+                                      // console.log(booking);
                                     }}
                                   >
                                     <LiaEditSolid />

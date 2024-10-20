@@ -3,17 +3,14 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://innspot-bdserver.vercel.app",
   withCredentials: true,
-})
-
+});
 
 const useAxiosSecure = () => {
   const [secureLoading, setSecureLoading] = useState(false);
 
   useEffect(() => {
-    ;
-
     const requestInterceptor = axiosSecure.interceptors.request.use(
       (req) => {
         setSecureLoading(true);
@@ -33,12 +30,12 @@ const useAxiosSecure = () => {
         return res;
       },
       (error) => {
-        if(error.response.status === 401 || error.response.status === 403) {
+        if (error.response.status === 401 || error.response.status === 403) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: `Something went wrong! Error ${error.response.status}`,
-            footer: "Unauthorized access"
+            footer: "Unauthorized access",
           });
         }
         return Promise.reject(error);

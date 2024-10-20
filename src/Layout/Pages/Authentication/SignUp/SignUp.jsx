@@ -31,11 +31,11 @@ const SignUp = () => {
     const email = data.email;
     const password = data.password;
 
-    console.log(name, photo, email, password);
+    // console.log(name, photo, email, password);
 
     signUpUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        // console.log(result.user);
 
         // Updateing user profile__
         updateUserProfile(name, photo)
@@ -60,11 +60,11 @@ const SignUp = () => {
             navigate("/");
           })
           .catch((error) => {
-            console.log("Update profile error", error);
+            console.log("Error to Update profile", error);
           });
       })
       .catch((error) => {
-        console.log("Sing Up error:", error);
+        console.log("Singed Up error:", error);
       });
   };
 

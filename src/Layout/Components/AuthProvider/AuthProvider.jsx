@@ -80,18 +80,18 @@ const AuthProvider = ({ children }) => {
 
       // JWT secret__
       if (currentUser) {
-        axiosSecure.post("/jwt", userEmail).then((res) => {
-          console.log(res.data);
+        axiosSecure.post("/jwt", userEmail).then(() => {
+          // console.log(res.data);
         });
       }
       else{
         axiosSecure.post("/logout")
-        .then(res => {
-          console.log(res.data);
+        .then(() => {
+          // console.log(res.data);
         })
       }
 
-      console.log(currentUser);
+      // console.log(currentUser);
     });
     return () => {
       unSubcribe();
