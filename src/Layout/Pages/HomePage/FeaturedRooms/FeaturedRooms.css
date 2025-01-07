@@ -74,28 +74,28 @@
   width: 100%;
   grid-column-start: 1;
   grid-column-end: 6;
-  background-image: url("https://i.ibb.co.com/JFbczCf/Be-Funky-collage.png");
+  background-image: url("https://i.postimg.cc/Hxcn9dxF/all.png");
 }
 
 #fectured_image_section_2 {
   width: 100%;
   grid-column-start: 6;
   grid-column-end: -1;
-  background-image: url("https://i.ibb.co.com/nQ9vzRY/point3d-commercial-imaging-ltd-oxe-CZrodz78-unsplash.png");
+  background-image: url("https://i.postimg.cc/Tw42KSJQ/featured-regular.jpg");
 }
 
 #fectured_image_section_3 {
   width: 100%;
   grid-column-start: 1;
   grid-column-end: 7;
-  background-image: url("https://i.ibb.co.com/6m8m6LG/vojtech-bruzek-Yrxr3bs-Pd-S0-unsplash.png");
+  background-image: url("https://i.postimg.cc/SRHKv5Xj/featured-suit.jpg");
 }
 
 #fectured_image_section_4 {
   width: 100%;
   grid-column-start: 7;
   grid-column-end: -1;
-  background-image: url("https://i.ibb.co.com/t3tJtHV/frames-for-your-heart-Fqqi-Av-Jejto-unsplash.png");
+  background-image: url("https://i.postimg.cc/0j46qj4k/featured-vip.jpg");
 }
 
 /* Fecatured image section style__end */
